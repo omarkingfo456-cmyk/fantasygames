@@ -1,1 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فانتازي ستور PS4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0e16;
+    --bg-2: #0f1420;
+    --ink: #eef1f6;
+    --muted: #8b93a7;
+    --cyan: #00d9ff;
+    --blue: #0057d9;
+    --violet: #7b2ff7;
+    --line: rgba(255,255,255,0.08);
+    --card: #10151f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Tajawal', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
 
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:32px 20px;
+    background:
+      radial-gradient(60% 50% at 50% 12%, rgba(0,87,217,0.35), transparent 70%),
+      radial-gradient(45% 40% at 85% 85%, rgba(123,47,247,0.22), transparent 70%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(60% 60% at 50% 40%, black, transparent 80%);
+    pointer-events:none;
+  }
+  .glow-orb{
+    position:absolute;
+    width:520px; height:520px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(0,217,255,0.18), transparent 65%);
+    top:-160px; right:-160px;
+    filter: blur(10px);
+    pointer-events:none;
+  }
+  .tag{
+    position:relative;
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.5px;
+    color: var(--cyan);
+    background: rgba(0,217,255,0.08);
+    border:1px solid rgba(0,217,255,0.35);
+    padding:7px 18px;
+    border-radius:999px;
+    margin-bottom:28px;
+  }
+  .store-name{
+    position:relative;
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:clamp(40px, 9vw, 92px);
+    line-height:1.08;
+    background: linear-gradient(90deg, #ffffff 20%, var(--cyan) 60%, var(--blue) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    max-width:14ch;
+    text-shadow: 0 0 60px rgba(0,217,255,0.25);
+  }
+  .store-sub{
+    position:relative;
+    font-size:clamp(16px, 2.4vw, 20px);
+    color: var(--muted);
+    margin-top:20px;
+    max-width:36ch;
+    line-height:1.7;
+  }
+  .cta-wrap{ position:relative; margin-top:46px; }
+  .cta-btn{
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    color:#04101c;
+    background: linear-gradient(95deg, var(--cyan), #3ea6ff);
+    border:none;
+    padding:18px 44px;
+    border-radius:14px;
+    cursor:pointer;
+    box-shadow: 0 10px 40px rgba(0,217,255,0.35);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 50px rgba(0,217,255,0.5); }
+  .cta-btn:active{ transform: translateY(0px) scale(0.98); }
+  .scroll-hint{
+    position:relative;
+    margin-top:56px;
+    color: var(--muted);
+    font-size:13px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(8px);} }
+
+  /* ---------- CATALOG ---------- */
+  .catalog{
+    padding: 90px 6vw 110px;
+    background: var(--bg-2);
+    border-top:1px solid var(--line);
+  }
+  .catalog-head{
+    display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px;
+    max-width:1200px; margin:0 auto 44px;
+  }
+  .catalog-head h2{
+    font-family:'Cairo', sans-serif;
+    font-weight:800;
+    font-size: clamp(26px, 3.6vw, 38px);
+  }
+  .catalog-head p{ color:var(--muted); font-size:15px; max-width:46ch; margin-top:10px; line-height:1.7; }
+  .count-pill{
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color: var(--cyan);
+    border:1px solid rgba(0,217,255,0.3);
+    padding:8px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .grid{
+    max-width:1200px; margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap:22px;
+  }
+
+  .card{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .card:hover{ border-color: rgba(0,217,255,0.45); transform: translateY(-4px); }
+
+  .cover{
+    position:relative;
+    aspect-ratio: 3/4;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .cover .glyph{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:58%;
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  }
+  .cover .tagchip{
+    position:absolute; top:10px; right:10px;
+    font-family:'Cairo', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    background: rgba(10,14,22,0.55);
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;
+    padding:4px 10px;
+    border-radius:999px;
+    backdrop-filter: blur(4px);
+  }
+  .cover .ps-mark{
+    position:absolute; bottom:10px; left:10px;
+    font-family:'Cairo', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.35);
+    padding:3px 9px;
+    border-radius:6px;
+  }
+
+  .info{ padding:16px 16px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .info h3{ font-family:'Cairo', sans-serif; font-size:16px; font-weight:700; line-height:1.4; }
+  .info .genre{ color: var(--muted); font-size:12.5px; }
+  .info .row{ margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .price{ font-family:'Cairo', sans-serif; font-weight:800; font-size:17px; color: var(--cyan); }
+  .order-btn{
+    font-family:'Tajawal', sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    background: rgba(255,255,255,0.06);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:9px;
+    cursor:pointer;
+    transition: background .2s ease, border-color .2s ease;
+    white-space:nowrap;
+  }
+  .order-btn:hover{ background: rgba(0,217,255,0.12); border-color: rgba(0,217,255,0.4); }
+
+  .foot-note{
+    max-width:1200px; margin:56px auto 0;
+    color: var(--muted);
+    font-size:13px;
+    text-align:center;
+    line-height:1.9;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cta-btn, .card, .order-btn, .scroll-hint svg{ transition:none; animation:none; }
+  }
+
+  /* ---------- PAGE SWITCHING ---------- */
+  .page{ min-height:100svh; }
+  .hero.is-hidden{ display:none; }
+  .catalog{ display:none; }
+  .catalog.is-open{ display:block; }
+
+  .back-btn{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Tajawal', sans-serif;
+    font-size:14px; font-weight:700;
+    color: var(--muted);
+    background:none; border:none; cursor:pointer;
+    padding:6px 2px; margin-bottom:22px;
+    transition: color .2s ease;
+  }
+  .back-btn:hover{ color: var(--cyan); }
+</style>
+</head>
+<body>
+
+  <section class="hero page" id="hero">
+    <div class="glow-orb"></div>
+    <span class="tag">PS4 · ألعاب أصلية ومستعملة بحالة ممتازة</span>
+    <h1 class="store-name">فانتازي ستور PS4</h1>
+    <p class="store-sub">تشكيلة مختارة من أقوى ألعاب البلايستيشن 4، بأسعار مناسبة وتوصيل لحد باب البيت.</p>
+    <div class="cta-wrap">
+      <button class="cta-btn" onclick="openCatalog()">
+        اضغط هنا لرؤية الألعاب
+      </button>
+    </div>
+  </section>
+
+  <section class="catalog page" id="catalog">
+    <div style="max-width:1200px; margin:0 auto;">
+      <button class="back-btn" onclick="closeCatalog()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        رجوع للصفحة الرئيسية
+      </button>
+    </div>
+    <div class="catalog-head">
+      <div>
+        <h2>الألعاب المتوفرة دلوقتي</h2>
+        <p>دوس على أي غلاف عشان تبعتلنا رسالة واتساب وتحجز.</p>
+      </div>
+      <span class="count-pill" id="countPill">10 ألعاب</span>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <p class="foot-note">
+      رقم الواتساب تحت لازم تغيره لرقمك من كود الصفحة.
+    </p>
+  </section>
+
+<script>
+  // رقم واتساب افتراضي - غيّره لرقمك
+  const WHATSAPP_NUMBER = "201000000000";
+
+  function openCatalog(){
+    document.getElementById('hero').classList.add('is-hidden');
+    document.getElementById('catalog').classList.add('is-open');
+    window.scrollTo(0, 0);
+  }
+  function closeCatalog(){
+    document.getElementById('catalog').classList.remove('is-open');
+    document.getElementById('hero').classList.remove('is-hidden');
+    window.scrollTo(0, 0);
+  }
+
+  const covers = [
+    ["#7b2ff7","#1a0b3d"],
+    ["#00d9ff","#003a5c"],
+    ["#c81e1e","#1a0505"],
+    ["#0057d9","#031024"],
+    ["#ffb020","#2a1500"],
+    ["#3a3f4a","#0a0c10"],
+    ["#1f8a55","#031a10"],
+    ["#00b7ff","#001f38"],
+    ["#a5551a","#1c0d02"],
+    ["#7b2ff7","#00d9ff"],
+  ];
+
+  const grid = document.getElementById('grid');
+  document.getElementById('countPill').textContent = covers.length + " ألعاب";
+
+  covers.forEach((grad, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="cover" style="background: linear-gradient(150deg, ${grad[0]}, ${grad[1]});">
+        <span class="tagchip">PS4</span>
+        <span class="ps-mark">فانتازي ستور</span>
+      </div>
+      <div class="info">
+        <div class="row" style="margin-top:0;">
+          <button class="order-btn" style="width:100%; text-align:center;">اسأل عنها</button>
+        </div>
+      </div>
+    `;
+    card.querySelector('.order-btn').addEventListener('click', () => {
+      const msg = encodeURIComponent(`عايز أسأل عن اللعبة رقم ${i + 1} في الكتالوج`);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+    });
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
