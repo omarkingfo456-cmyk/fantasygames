@@ -3,942 +3,914 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>فانتازي ستور PS4</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0a0e16;
-  --bg2:#0f1420;
-  --card:#10151f;
-  --ink:#eef1f6;
-  --muted:#8b93a7;
-  --cyan:#00d9ff;
-  --blue:#0057d9;
-  --violet:#7b2ff7;
-  --line:rgba(255,255,255,.08);
-}
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
+:root{
+    --bg:#020914;
+    --panel:#061326;
+    --card:#07182d;
+    --blue:#008cff;
+    --cyan:#00d9ff;
+    --white:#ffffff;
+    --muted:#aab5c7;
+    --line:rgba(0,150,255,.45);
 }
 
 body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Tajawal',sans-serif;
-  min-height:100vh;
-  overflow-x:hidden;
+    background:
+    radial-gradient(circle at top,#08234a 0%,#020914 48%,#01050b 100%);
+    color:var(--white);
+    font-family:'Cairo',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 /* =========================
    الصفحة الرئيسية
 ========================= */
 
-.hero{
-  position:relative;
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:32px 20px;
-  background:
-    radial-gradient(60% 50% at 50% 12%,rgba(0,87,217,.35),transparent 70%),
-    radial-gradient(45% 40% at 85% 85%,rgba(123,47,247,.22),transparent 70%),
-    var(--bg);
-  overflow:hidden;
+.home{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
 }
 
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:42px 42px;
-  mask-image:radial-gradient(60% 60% at 50% 40%,black,transparent 80%);
-  pointer-events:none;
+.home-box{
+    width:100%;
+    max-width:850px;
 }
 
-.glow-orb{
-  position:absolute;
-  width:520px;
-  height:520px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(0,217,255,.18),transparent 65%);
-  top:-160px;
-  right:-160px;
-  filter:blur(10px);
-  pointer-events:none;
+.logo{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    font-weight:900;
+    background:linear-gradient(145deg,#008cff,#0043a8);
+    box-shadow:0 0 45px rgba(0,140,255,.35);
 }
 
-.tag{
-  position:relative;
-  font-family:'Cairo',sans-serif;
-  font-weight:700;
-  font-size:13px;
-  color:var(--cyan);
-  background:rgba(0,217,255,.08);
-  border:1px solid rgba(0,217,255,.35);
-  padding:7px 18px;
-  border-radius:999px;
-  margin-bottom:28px;
+.home h1{
+    font-size:clamp(38px,8vw,75px);
+    margin-top:25px;
+    font-weight:900;
+    background:linear-gradient(90deg,#fff,#00d9ff,#1785ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
-.store-name{
-  position:relative;
-  font-family:'Cairo',sans-serif;
-  font-weight:900;
-  font-size:clamp(40px,9vw,92px);
-  line-height:1.08;
-  background:linear-gradient(90deg,#fff 20%,var(--cyan) 60%,var(--blue) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  max-width:14ch;
-  text-shadow:0 0 60px rgba(0,217,255,.25);
+.home p{
+    color:var(--muted);
+    font-size:18px;
+    margin-top:12px;
 }
 
-.store-sub{
-  position:relative;
-  font-size:clamp(16px,2.4vw,20px);
-  color:var(--muted);
-  margin-top:20px;
-  max-width:36ch;
-  line-height:1.7;
+.enter-btn{
+    margin-top:40px;
+    border:0;
+    cursor:pointer;
+    padding:17px 45px;
+    border-radius:13px;
+    font-family:'Cairo';
+    font-size:18px;
+    font-weight:800;
+    color:#00101c;
+    background:linear-gradient(90deg,#00d9ff,#168cff);
+    box-shadow:0 10px 35px rgba(0,180,255,.35);
+    transition:.25s;
 }
 
-.cta-wrap{
-  position:relative;
-  margin-top:46px;
+.enter-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 45px rgba(0,180,255,.5);
 }
 
-.cta-btn{
-  font-family:'Cairo',sans-serif;
-  font-weight:700;
-  font-size:18px;
-  color:#04101c;
-  background:linear-gradient(95deg,var(--cyan),#3ea6ff);
-  border:none;
-  padding:18px 44px;
-  border-radius:14px;
-  cursor:pointer;
-  box-shadow:0 10px 40px rgba(0,217,255,.35);
-  transition:.25s;
-}
-
-.cta-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 50px rgba(0,217,255,.5);
-}
 
 /* =========================
    الصفحات
 ========================= */
 
 .page{
-  min-height:100svh;
+    display:none;
+    min-height:100vh;
+    padding:35px 5%;
 }
 
-.hidden{
-  display:none !important;
+.page.active{
+    display:block;
 }
+
 
 /* =========================
-   رأس الصفحات
+   الهيدر
 ========================= */
 
-.content{
-  padding:60px 6vw 100px;
-  background:var(--bg2);
-  min-height:100svh;
+.header{
+    max-width:1250px;
+    margin:0 auto 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.top-bar{
-  max-width:1200px;
-  margin:0 auto 35px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+.header-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-.back-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  font-family:'Cairo',sans-serif;
-  font-size:14px;
-  font-weight:700;
-  color:var(--muted);
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--line);
-  padding:10px 16px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:.2s;
+.header-icon{
+    font-size:42px;
 }
 
-.back-btn:hover{
-  color:var(--cyan);
-  border-color:rgba(0,217,255,.4);
+.header h2{
+    font-size:clamp(25px,4vw,42px);
+    font-weight:900;
 }
 
-.page-title{
-  max-width:1200px;
-  margin:0 auto 40px;
+.header p{
+    color:var(--muted);
+    margin-top:5px;
+    font-size:14px;
 }
 
-.page-title h2{
-  font-family:'Cairo',sans-serif;
-  font-weight:900;
-  font-size:clamp(27px,4vw,40px);
+.back{
+    border:1px solid var(--line);
+    background:#06172c;
+    color:#fff;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-family:'Cairo';
+    font-weight:700;
 }
 
-.page-title p{
-  color:var(--muted);
-  margin-top:9px;
-  line-height:1.8;
+.back:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
 }
+
 
 /* =========================
    التصنيفات
 ========================= */
 
-.categories-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+.categories{
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.category-card{
-  position:relative;
-  min-height:150px;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(0,217,255,.12),transparent 50%),
+.category{
+    min-height:170px;
+    background:
+    linear-gradient(145deg,rgba(0,140,255,.09),rgba(0,0,0,.15)),
     var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:25px;
-  cursor:pointer;
-  overflow:hidden;
-  transition:.25s;
+
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:25px;
+
+    cursor:pointer;
+    transition:.25s;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.category-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(0,217,255,.5);
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+.category:hover{
+    transform:translateY(-5px);
+    border-color:#00d9ff;
+    box-shadow:0 12px 40px rgba(0,140,255,.18);
 }
 
 .category-icon{
-  font-size:42px;
-  margin-bottom:12px;
+    font-size:48px;
+    margin-bottom:10px;
 }
 
-.category-card h3{
-  font-family:'Cairo',sans-serif;
-  font-size:20px;
+.category h3{
+    font-size:22px;
+    font-weight:900;
 }
 
-.category-card span{
-  color:var(--muted);
-  font-size:13px;
-  display:block;
-  margin-top:5px;
+.category span{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:4px;
 }
+
 
 /* =========================
-   صفحة الألعاب
+   الألعاب
 ========================= */
 
-.games-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-  gap:22px;
+.games{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.game-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  overflow:hidden;
-  transition:.25s;
+.game{
+    background:
+    linear-gradient(145deg,rgba(0,80,150,.12),rgba(0,0,0,.12)),
+    var(--card);
+
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:15px;
+
+    text-align:center;
+
+    transition:.25s;
 }
 
-.game-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(0,217,255,.45);
+.game:hover{
+    transform:translateY(-4px);
+    border-color:#00d9ff;
 }
 
-.game-cover{
-  position:relative;
-  aspect-ratio:3/4;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
+/* صورة اللعبة */
+
+.game-image{
+    width:100%;
+    aspect-ratio:3/4;
+    border-radius:10px;
+    overflow:hidden;
+    background:#020914;
 }
 
-.game-cover img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.game-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-.cover-placeholder{
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  font-family:'Cairo',sans-serif;
-  font-size:24px;
-  font-weight:900;
+
+/* اسم اللعبة */
+
+.game-name{
+    font-size:19px;
+    font-weight:900;
+    margin-top:13px;
 }
 
-.ps4-badge{
-  position:absolute;
-  top:10px;
-  right:10px;
-  background:rgba(0,0,0,.65);
-  border:1px solid rgba(255,255,255,.2);
-  padding:5px 10px;
-  border-radius:8px;
-  font-family:'Cairo',sans-serif;
-  font-size:11px;
+
+/* التصنيف */
+
+.game-category{
+    display:inline-block;
+    margin-top:8px;
+    padding:5px 16px;
+    border-radius:50px;
+
+    background:rgba(0,140,255,.13);
+    border:1px solid rgba(0,180,255,.5);
+
+    color:#00d9ff;
+    font-size:13px;
+    font-weight:800;
 }
 
-.game-info{
-  padding:16px;
-}
 
-.game-info h3{
-  font-family:'Cairo',sans-serif;
-  font-size:17px;
-  margin-bottom:7px;
-}
-
-.game-info p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.7;
-  min-height:45px;
-}
-
-.game-details{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  margin-top:12px;
-  font-size:12px;
-}
+/* المساحة */
 
 .game-size{
-  color:var(--cyan);
+    margin-top:10px;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
 }
 
-.whatsapp-btn{
-  width:100%;
-  margin-top:13px;
-  padding:10px;
-  border-radius:9px;
-  border:1px solid var(--line);
-  background:rgba(0,217,255,.08);
-  color:var(--ink);
-  font-family:'Cairo',sans-serif;
-  font-weight:700;
-  cursor:pointer;
+.game-size span{
+    color:#00d9ff;
 }
 
-.whatsapp-btn:hover{
-  background:rgba(0,217,255,.16);
-}
-
-.empty{
-  max-width:600px;
-  margin:50px auto;
-  text-align:center;
-  color:var(--muted);
-  padding:40px;
-  border:1px dashed var(--line);
-  border-radius:16px;
-}
 
 /* =========================
    موبايل
 ========================= */
 
-@media(max-width:600px){
+@media(max-width:800px){
 
-  .content{
-    padding:35px 18px 70px;
-  }
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+        gap:13px;
+    }
 
-  .categories-grid{
-    grid-template-columns:1fr 1fr;
-    gap:13px;
-  }
+    .category{
+        min-height:145px;
+        padding:15px;
+    }
 
-  .category-card{
-    min-height:135px;
-    padding:17px;
-  }
+    .category-icon{
+        font-size:35px;
+    }
 
-  .category-icon{
-    font-size:32px;
-  }
+    .category h3{
+        font-size:17px;
+    }
 
-  .category-card h3{
-    font-size:16px;
-  }
+    .games{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
 
-  .games-grid{
-    grid-template-columns:1fr 1fr;
-    gap:13px;
-  }
+    .game{
+        padding:9px;
+    }
 
-  .game-info{
-    padding:11px;
-  }
+    .game-name{
+        font-size:14px;
+    }
 
-  .game-info h3{
-    font-size:14px;
-  }
+    .game-category{
+        font-size:11px;
+        padding:4px 10px;
+    }
 
-  .game-info p{
-    font-size:11px;
-  }
+    .game-size{
+        font-size:12px;
+    }
 
-  .cta-btn{
-    font-size:16px;
-    padding:16px 28px;
-  }
+    .header{
+        align-items:flex-start;
+    }
+
 }
+
+@media(max-width:430px){
+
+    .categories{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .games{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .home h1{
+        font-size:38px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================
      الصفحة الرئيسية
 ========================= -->
 
-<section class="hero page" id="homePage">
+<section class="home" id="home">
 
-  <div class="glow-orb"></div>
+    <div class="home-box">
 
-  <span class="tag">
-    PS4 · كتالوج الألعاب
-  </span>
+        <div class="logo">
+            F
+        </div>
 
-  <h1 class="store-name">
-    فانتازي ستور PS4
-  </h1>
+        <h1>
+            فانتازي ستور PS4
+        </h1>
 
-  <p class="store-sub">
-    اختار تصنيف اللعبة وشوف الألعاب المتوفرة عندنا.
-  </p>
+        <p>
+            كتالوج ألعاب بلايستيشن 4
+        </p>
 
-  <div class="cta-wrap">
-    <button class="cta-btn" onclick="openCategories()">
-      اضغط هنا لرؤية الألعاب
-    </button>
-  </div>
+        <button class="enter-btn" onclick="showCategories()">
+            اضغط هنا لرؤية الألعاب
+        </button>
+
+    </div>
 
 </section>
+
 
 
 <!-- =========================
      صفحة التصنيفات
 ========================= -->
 
-<section class="content page hidden" id="categoriesPage">
+<section class="page" id="categoriesPage">
 
-  <div class="top-bar">
+    <div class="header">
 
-    <button class="back-btn" onclick="goHome()">
-      ← الصفحة الرئيسية
-    </button>
+        <div class="header-title">
 
-  </div>
+            <div class="header-icon">
+                🎮
+            </div>
 
-  <div class="page-title">
-    <h2>تصنيفات ألعاب PS4 🎮</h2>
-    <p>
-      اختار القسم اللي عايز تشوف الألعاب الموجودة فيه.
-    </p>
-  </div>
+            <div>
 
-  <div class="categories-grid" id="categoriesGrid"></div>
+                <h2>
+                    تصنيفات ألعاب PS4
+                </h2>
+
+                <p>
+                    اختار نوع الألعاب اللي عايز تشوفه
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button class="back" onclick="showHome()">
+            الرئيسية
+        </button>
+
+    </div>
+
+
+    <div class="categories" id="categories"></div>
 
 </section>
+
 
 
 <!-- =========================
      صفحة الألعاب
 ========================= -->
 
-<section class="content page hidden" id="gamesPage">
+<section class="page" id="gamesPage">
 
-  <div class="top-bar">
+    <div class="header">
 
-    <button class="back-btn" onclick="backToCategories()">
-      → رجوع للتصنيفات
-    </button>
+        <div class="header-title">
 
-  </div>
+            <div class="header-icon" id="categoryIcon">
+                🎮
+            </div>
 
-  <div class="page-title">
-    <h2 id="gamesTitle"></h2>
-    <p id="gamesDescription"></p>
-  </div>
+            <div>
 
-  <div class="games-grid" id="gamesGrid"></div>
+                <h2 id="categoryTitle">
+                    الألعاب
+                </h2>
+
+                <p id="categoryDescription">
+                    الألعاب المتوفرة
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button class="back" onclick="showCategories()">
+            ← التصنيفات
+        </button>
+
+    </div>
+
+
+    <div class="games" id="games"></div>
 
 </section>
 
 
+
 <script>
 
-/* =====================================================
-   رقم واتساب
-   غيّر الرقم هنا إلى رقمك
-   مثال مصر:
-   201012345678
-===================================================== */
 
-const WHATSAPP_NUMBER = "201000000000";
-
-
-/* =====================================================
+/* =========================
    التصنيفات
-===================================================== */
+========================= */
 
-const categories = [
+const categoriesData = [
 
-  {
-    id:"action",
-    name:"أكشن",
-    icon:"🎯",
-    description:"ألعاب مليانة حركة وتحديات"
-  },
+    {
+        id:"action",
+        name:"أكشن",
+        icon:"🎯",
+        description:"ألعاب الأكشن والحركة"
+    },
 
-  {
-    id:"adventure",
-    name:"مغامرات",
-    icon:"🗺️",
-    description:"استكشاف وقصص ومغامرات"
-  },
+    {
+        id:"adventure",
+        name:"مغامرات",
+        icon:"🗺️",
+        description:"ألعاب المغامرات والاستكشاف"
+    },
 
-  {
-    id:"horror",
-    name:"رعب",
-    icon:"👻",
-    description:"ألعاب الرعب والإثارة"
-  },
+    {
+        id:"horror",
+        name:"رعب",
+        icon:"👻",
+        description:"ألعاب الرعب والإثارة"
+    },
 
-  {
-    id:"kids",
-    name:"أطفال",
-    icon:"👶",
-    description:"ألعاب مناسبة للأطفال والعائلة"
-  },
+    {
+        id:"kids",
+        name:"أطفال",
+        icon:"👶",
+        description:"ألعاب الأطفال والعائلة"
+    },
 
-  {
-    id:"sports",
-    name:"رياضة",
-    icon:"⚽",
-    description:"كرة قدم ورياضات مختلفة"
-  },
+    {
+        id:"sports",
+        name:"رياضة",
+        icon:"⚽",
+        description:"ألعاب الرياضة وكرة القدم"
+    },
 
-  {
-    id:"racing",
-    name:"سباق",
-    icon:"🏎️",
-    description:"سيارات وسباقات"
-  },
+    {
+        id:"racing",
+        name:"سباق",
+        icon:"🏎️",
+        description:"ألعاب السيارات والسباقات"
+    },
 
-  {
-    id:"fighting",
-    name:"قتال",
-    icon:"🥊",
-    description:"ألعاب القتال والمواجهات"
-  },
+    {
+        id:"fighting",
+        name:"قتال",
+        icon:"🥊",
+        description:"ألعاب القتال"
+    },
 
-  {
-    id:"shooting",
-    name:"تصويب",
-    icon:"🔫",
-    description:"ألعاب التصويب"
-  },
+    {
+        id:"shooting",
+        name:"تصويب",
+        icon:"🎯",
+        description:"ألعاب التصويب"
+    },
 
-  {
-    id:"local",
-    name:"لاعبين محليًا",
-    icon:"👥",
-    description:"ألعاب تلعبها مع شخص بجانبك"
-  }
+    {
+        id:"local",
+        name:"لاعبين محليًا",
+        icon:"👥",
+        description:"ألعاب شخصين على نفس الجهاز"
+    }
 
 ];
 
 
-/* =====================================================
+
+/* =========================
    الألعاب
-   لإضافة لعبة:
-   انسخ لعبة وعدل البيانات
-===================================================== */
+========================= */
 
-const games = [
+const gamesData = [
 
-{
-  name:"God of War",
-  category:"action",
-  size:"45 GB",
-  description:"أكشن ومغامرات",
-  image:"./images/god-of-war.jpg"
-},
+    {
+        name:"God of War Remastered",
+        category:"action",
+        size:"45 GB",
+        image:"images/god-of-war.jpg"
+    },
 
-  {
-    name:"Uncharted 4",
-    category:"adventure",
-    size:"55 GB",
-    description:"مغامرات واستكشاف",
-    image:""
-  },
+    {
+        name:"Uncharted 4",
+        category:"adventure",
+        size:"120 GB",
+        image:"images/uncharted-4.jpg"
+    },
 
-  {
-    name:"Resident Evil",
-    category:"horror",
-    size:"25 GB",
-    description:"رعب وبقاء",
-    image:""
-  },
+    {
+        name:"Resident Evil 4",
+        category:"horror",
+        size:"60 GB",
+        image:"images/resident-evil-4.jpg"
+    },
 
-  {
-    name:"Crash Bandicoot",
-    category:"kids",
-    size:"20 GB",
-    description:"مغامرات مناسبة للعائلة",
-    image:""
-  },
+    {
+        name:"Crash Bandicoot N. Sane Trilogy",
+        category:"kids",
+        size:"42 GB",
+        image:"images/crash.jpg"
+    },
 
-  {
-    name:"EA Sports FC",
-    category:"sports",
-    size:"50 GB",
-    description:"كرة قدم",
-    image:""
-  },
+    {
+        name:"Need for Speed Payback",
+        category:"racing",
+        size:"32 GB",
+        image:"images/nfs-payback.jpg"
+    },
 
-  {
-    name:"Need for Speed",
-    category:"racing",
-    size:"30 GB",
-    description:"سباقات سيارات",
-    image:""
-  },
+    {
+        name:"Mortal Kombat 11",
+        category:"fighting",
+        size:"55 GB",
+        image:"images/mortal-kombat-11.jpg"
+    },
 
-  {
-    name:"Mortal Kombat",
-    category:"fighting",
-    size:"40 GB",
-    description:"قتال",
-    image:""
-  },
+    {
+        name:"Call of Duty Modern Warfare",
+        category:"shooting",
+        size:"90 GB",
+        image:"images/cod-modern-warfare.jpg"
+    },
 
-  {
-    name:"Call of Duty",
-    category:"shooting",
-    size:"80 GB",
-    description:"تصويب وحركة",
-    image:""
-  },
+    {
+        name:"It Takes Two",
+        category:"local",
+        size:"47 GB",
+        image:"images/it-takes-two.jpg"
+    },
 
-  {
-    name:"It Takes Two",
-    category:"local",
-    size:"45 GB",
-    description:"لعب تعاوني لشخصين",
-    image:""
-  }
+    {
+        name:"EA Sports FC 24",
+        category:"sports",
+        size:"65 GB",
+        image:"images/fc-24.jpg"
+    }
 
 ];
 
 
-/* =====================================================
+
+/* =========================
    عناصر الصفحات
-===================================================== */
+========================= */
 
-const homePage = document.getElementById("homePage");
-const categoriesPage = document.getElementById("categoriesPage");
-const gamesPage = document.getElementById("gamesPage");
+const home =
+document.getElementById("home");
 
-const categoriesGrid = document.getElementById("categoriesGrid");
-const gamesGrid = document.getElementById("gamesGrid");
+const categoriesPage =
+document.getElementById("categoriesPage");
 
-const gamesTitle = document.getElementById("gamesTitle");
-const gamesDescription = document.getElementById("gamesDescription");
+const gamesPage =
+document.getElementById("gamesPage");
+
+const categories =
+document.getElementById("categories");
+
+const games =
+document.getElementById("games");
 
 
-/* =====================================================
-   فتح التصنيفات
-===================================================== */
 
-function openCategories(){
+/* =========================
+   الرئيسية
+========================= */
 
-  homePage.classList.add("hidden");
-  gamesPage.classList.add("hidden");
-  categoriesPage.classList.remove("hidden");
+function showHome(){
 
-  window.scrollTo(0,0);
+    home.style.display="flex";
+
+    categoriesPage.classList.remove("active");
+
+    gamesPage.classList.remove("active");
+
+    window.scrollTo(0,0);
+
 }
 
 
-/* =====================================================
-   الرجوع للرئيسية
-===================================================== */
 
-function goHome(){
+/* =========================
+   التصنيفات
+========================= */
 
-  categoriesPage.classList.add("hidden");
-  gamesPage.classList.add("hidden");
-  homePage.classList.remove("hidden");
+function showCategories(){
 
-  window.scrollTo(0,0);
+    home.style.display="none";
+
+    gamesPage.classList.remove("active");
+
+    categoriesPage.classList.add("active");
+
+    window.scrollTo(0,0);
+
 }
 
 
-/* =====================================================
-   الرجوع للتصنيفات
-===================================================== */
 
-function backToCategories(){
-
-  gamesPage.classList.add("hidden");
-  categoriesPage.classList.remove("hidden");
-
-  window.scrollTo(0,0);
-}
-
-
-/* =====================================================
-   رسم التصنيفات
-===================================================== */
+/* =========================
+   عرض التصنيفات
+========================= */
 
 function renderCategories(){
 
-  categoriesGrid.innerHTML = "";
+    categories.innerHTML="";
 
-  categories.forEach(category => {
+    categoriesData.forEach(category => {
 
-    const count = games.filter(
-      game => game.category === category.id
-    ).length;
+        const count =
+        gamesData.filter(
+            game => game.category === category.id
+        ).length;
 
-    const card = document.createElement("div");
+        const box =
+        document.createElement("div");
 
-    card.className = "category-card";
+        box.className="category";
 
-    card.innerHTML = `
-      <div class="category-icon">${category.icon}</div>
+        box.innerHTML=`
 
-      <h3>${category.name}</h3>
+            <div class="category-icon">
+                ${category.icon}
+            </div>
 
-      <span>
-        ${category.description}
-      </span>
+            <h3>
+                ${category.name}
+            </h3>
 
-      <span>
-        ${count} ألعاب
-      </span>
-    `;
+            <span>
+                ${category.description}
+            </span>
 
-    card.addEventListener("click", () => {
+            <span>
+                ${count} ألعاب
+            </span>
 
-      openCategory(category);
+        `;
+
+        box.onclick=function(){
+
+            openCategory(category);
+
+        };
+
+        categories.appendChild(box);
 
     });
 
-    categoriesGrid.appendChild(card);
-
-  });
-
 }
 
 
-/* =====================================================
-   فتح تصنيف معين
-===================================================== */
+
+/* =========================
+   فتح تصنيف
+========================= */
 
 function openCategory(category){
 
-  categoriesPage.classList.add("hidden");
-  gamesPage.classList.remove("hidden");
+    home.style.display="none";
 
-  gamesTitle.textContent =
-    category.icon + " ألعاب " + category.name;
+    categoriesPage.classList.remove("active");
 
-  gamesDescription.textContent =
-    category.description;
+    gamesPage.classList.add("active");
 
-  renderGames(category.id);
 
-  window.scrollTo(0,0);
+    document.getElementById("categoryIcon")
+    .textContent=category.icon;
+
+
+    document.getElementById("categoryTitle")
+    .textContent="ألعاب " + category.name;
+
+
+    document.getElementById("categoryDescription")
+    .textContent=category.description;
+
+
+    renderGames(category.id);
+
+    window.scrollTo(0,0);
+
 }
 
 
-/* =====================================================
-   رسم الألعاب
-===================================================== */
+
+/* =========================
+   عرض الألعاب
+========================= */
 
 function renderGames(categoryId){
 
-  gamesGrid.innerHTML = "";
+    games.innerHTML="";
 
-  const filteredGames = games.filter(
-    game => game.category === categoryId
-  );
-
-  if(filteredGames.length === 0){
-
-    gamesGrid.innerHTML = `
-      <div class="empty">
-        لا توجد ألعاب مضافة في هذا التصنيف حاليًا.
-      </div>
-    `;
-
-    return;
-  }
+    const filtered =
+    gamesData.filter(
+        game => game.category === categoryId
+    );
 
 
-  filteredGames.forEach((game,index) => {
+    if(filtered.length===0){
 
-    const card = document.createElement("div");
+        games.innerHTML=`
 
-    card.className = "game-card";
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:50px;
+                color:#aab5c7;
+            ">
 
+                لا توجد ألعاب في هذا التصنيف حاليًا.
 
-    let coverHTML = "";
+            </div>
 
-    if(game.image){
+        `;
 
-      coverHTML = `
-        <img
-          src="${game.image}"
-          alt="${game.name}"
-        >
-      `;
-
-    }else{
-
-      coverHTML = `
-        <div class="cover-placeholder"
-             style="background:
-             linear-gradient(145deg,#7b2ff7,#07152e);">
-
-          ${game.name}
-
-        </div>
-      `;
+        return;
 
     }
 
 
-    card.innerHTML = `
+    filtered.forEach(game => {
 
-      <div class="game-cover">
+        const card =
+        document.createElement("div");
 
-        ${coverHTML}
-
-        <span class="ps4-badge">
-          PS4
-        </span>
-
-      </div>
+        card.className="game";
 
 
-      <div class="game-info">
+        card.innerHTML=`
 
-        <h3>
-          ${game.name}
-        </h3>
+            <div class="game-image">
 
-        <p>
-          ${game.description}
-        </p>
+                <img
+                    src="${game.image}"
+                    alt="${game.name}"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;height:100%;display:flex;align-items:center;justify-content:center;color:#718096;padding:20px&quot;>الصورة غير موجودة</div>'"
+                >
 
-
-        <div class="game-details">
-
-          <span>
-            🎮 PS4
-          </span>
-
-          <span class="game-size">
-            💾 ${game.size}
-          </span>
-
-        </div>
+            </div>
 
 
-        <button class="whatsapp-btn">
-          اسأل عنها على واتساب
-        </button>
-
-      </div>
-
-    `;
+            <div class="game-name">
+                ${game.name}
+            </div>
 
 
-    card
-      .querySelector(".whatsapp-btn")
-      .addEventListener("click", () => {
-
-        const message =
-          `عايز أسأل عن لعبة ${game.name} على PS4`;
-
-        const url =
-          `https://wa.me/${WHATSAPP_NUMBER}?text=${
-            encodeURIComponent(message)
-          }`;
-
-        window.open(url,"_blank");
-
-      });
+            <div class="game-category">
+                ${getCategoryName(game.category)}
+            </div>
 
 
-    gamesGrid.appendChild(card);
+            <div class="game-size">
+                💾 المساحة:
+                <span>${game.size}</span>
+            </div>
 
-  });
+        `;
+
+
+        games.appendChild(card);
+
+    });
 
 }
 
 
-/* =====================================================
-   تشغيل التصنيفات عند فتح الموقع
-===================================================== */
+
+/* =========================
+   اسم التصنيف
+========================= */
+
+function getCategoryName(id){
+
+    const category =
+    categoriesData.find(
+        item => item.id === id
+    );
+
+    return category
+        ? category.name
+        : "";
+
+}
+
+
+
+/* =========================
+   تشغيل الموقع
+========================= */
 
 renderCategories();
+
+showHome();
 
 </script>
 
