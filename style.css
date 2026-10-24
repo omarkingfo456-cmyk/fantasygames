@@ -302,3 +302,127 @@ input {
         grid-template-columns: 1fr;
     }
 }
+/* ألوان FANTASY STORE الجديدة */
+body {
+    background: #ffffff;
+    color: #22212b;
+}
+
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeF5;
+}
+
+.site-header p {
+    color: #777585;
+}
+
+.site-header h1 span {
+    color: #6c35d8;
+}
+
+.back-link {
+    color: #33313e;
+    border-color: #dedbe8;
+    background: #ffffff;
+}
+
+/* مربعات الأقسام */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+    gap: 12px;
+    margin: 25px 0 30px;
+}
+
+.category {
+    min-height: 60px;
+    background: #ffffff;
+    color: #302d3b;
+    border: 1px solid #dedbe8;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.category:hover {
+    border-color: #6c35d8;
+    color: #6c35d8;
+    background: #f7f2ff;
+}
+
+/* القسم المختار بالبنفسجي */
+.category.active {
+    background: #6c35d8;
+    color: #ffffff;
+    border-color: #6c35d8;
+}
+
+/* بطاقات الألعاب */
+.game-card {
+    background: #ffffff;
+    border-color: #e5e2ed;
+    box-shadow: 0 3px 12px rgba(35, 20, 70, 0.05);
+}
+
+.game-card:hover {
+    border-color: #6c35d8;
+}
+
+.game-description,
+.results-info {
+    color: #777585;
+}
+
+.game-tag {
+    background: #f0ebfa;
+    color: #5830a8;
+}
+
+.details-button {
+    background: #ffffff;
+    color: #6c35d8;
+    border-color: #6c35d8;
+}
+
+.details-button:hover {
+    background: #6c35d8;
+    color: #ffffff;
+}
+
+#searchInput {
+    background: #ffffff;
+    color: #22212b;
+    border-color: #dedbe8;
+}
+
+#searchInput:focus {
+    border-color: #6c35d8;
+}
+
+.site-footer {
+    color: #777585;
+    border-color: #eeeeF5;
+}
+
+.modal-content {
+    background: #ffffff;
+    color: #22212b;
+    border-color: #dedbe8;
+}
+
+.modal-content p {
+    color: #55515f;
+}
+
+.modal-close {
+    color: #6c35d8;
+    border-color: #6c35d8;
+}
+
+@media (max-width: 600px) {
+    .categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
