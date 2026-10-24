@@ -1,918 +1,136 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>فانتازي ستور PS4</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-:root{
-    --bg:#020914;
-    --panel:#061326;
-    --card:#07182d;
-    --blue:#008cff;
-    --cyan:#00d9ff;
-    --white:#ffffff;
-    --muted:#aab5c7;
-    --line:rgba(0,150,255,.45);
-}
-
-body{
-    background:
-    radial-gradient(circle at top,#08234a 0%,#020914 48%,#01050b 100%);
-    color:var(--white);
-    font-family:'Cairo',sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-}
-
-/* =========================
-   الصفحة الرئيسية
-========================= */
-
-.home{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:25px;
-}
-
-.home-box{
-    width:100%;
-    max-width:850px;
-}
-
-.logo{
-    width:90px;
-    height:90px;
-    margin:auto;
-    border-radius:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:45px;
-    font-weight:900;
-    background:linear-gradient(145deg,#008cff,#0043a8);
-    box-shadow:0 0 45px rgba(0,140,255,.35);
-}
-
-.home h1{
-    font-size:clamp(38px,8vw,75px);
-    margin-top:25px;
-    font-weight:900;
-    background:linear-gradient(90deg,#fff,#00d9ff,#1785ff);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.home p{
-    color:var(--muted);
-    font-size:18px;
-    margin-top:12px;
-}
-
-.enter-btn{
-    margin-top:40px;
-    border:0;
-    cursor:pointer;
-    padding:17px 45px;
-    border-radius:13px;
-    font-family:'Cairo';
-    font-size:18px;
-    font-weight:800;
-    color:#00101c;
-    background:linear-gradient(90deg,#00d9ff,#168cff);
-    box-shadow:0 10px 35px rgba(0,180,255,.35);
-    transition:.25s;
-}
-
-.enter-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 45px rgba(0,180,255,.5);
-}
-
-
-/* =========================
-   الصفحات
-========================= */
-
-.page{
-    display:none;
-    min-height:100vh;
-    padding:35px 5%;
-}
-
-.page.active{
-    display:block;
-}
-
-
-/* =========================
-   الهيدر
-========================= */
-
-.header{
-    max-width:1250px;
-    margin:0 auto 40px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.header-title{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.header-icon{
-    font-size:42px;
-}
-
-.header h2{
-    font-size:clamp(25px,4vw,42px);
-    font-weight:900;
-}
-
-.header p{
-    color:var(--muted);
-    margin-top:5px;
-    font-size:14px;
-}
-
-.back{
-    border:1px solid var(--line);
-    background:#06172c;
-    color:#fff;
-    padding:11px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    font-family:'Cairo';
-    font-weight:700;
-}
-
-.back:hover{
-    border-color:var(--cyan);
-    color:var(--cyan);
-}
-
-
-/* =========================
-   التصنيفات
-========================= */
-
-.categories{
-    max-width:1250px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.category{
-    min-height:170px;
-    background:
-    linear-gradient(145deg,rgba(0,140,255,.09),rgba(0,0,0,.15)),
-    var(--card);
-
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:25px;
-
-    cursor:pointer;
-    transition:.25s;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.category:hover{
-    transform:translateY(-5px);
-    border-color:#00d9ff;
-    box-shadow:0 12px 40px rgba(0,140,255,.18);
-}
-
-.category-icon{
-    font-size:48px;
-    margin-bottom:10px;
-}
-
-.category h3{
-    font-size:22px;
-    font-weight:900;
-}
-
-.category span{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:4px;
-}
-
-
-/* =========================
-   الألعاب
-========================= */
-
-.games{
-    max-width:1250px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.game{
-    background:
-    linear-gradient(145deg,rgba(0,80,150,.12),rgba(0,0,0,.12)),
-    var(--card);
-
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:15px;
-
-    text-align:center;
-
-    transition:.25s;
-}
-
-.game:hover{
-    transform:translateY(-4px);
-    border-color:#00d9ff;
-}
-
-
-/* صورة اللعبة */
-
-.game-image{
-    width:100%;
-    aspect-ratio:3/4;
-    border-radius:10px;
-    overflow:hidden;
-    background:#020914;
-}
-
-.game-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-
-/* اسم اللعبة */
-
-.game-name{
-    font-size:19px;
-    font-weight:900;
-    margin-top:13px;
-}
-
-
-/* التصنيف */
-
-.game-category{
-    display:inline-block;
-    margin-top:8px;
-    padding:5px 16px;
-    border-radius:50px;
-
-    background:rgba(0,140,255,.13);
-    border:1px solid rgba(0,180,255,.5);
-
-    color:#00d9ff;
-    font-size:13px;
-    font-weight:800;
-}
-
-
-/* المساحة */
-
-.game-size{
-    margin-top:10px;
-    color:#fff;
-    font-size:15px;
-    font-weight:700;
-}
-
-.game-size span{
-    color:#00d9ff;
-}
-
-
-/* =========================
-   موبايل
-========================= */
-
-@media(max-width:800px){
-
-    .categories{
-        grid-template-columns:repeat(2,1fr);
-        gap:13px;
-    }
-
-    .category{
-        min-height:145px;
-        padding:15px;
-    }
-
-    .category-icon{
-        font-size:35px;
-    }
-
-    .category h3{
-        font-size:17px;
-    }
-
-    .games{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .game{
-        padding:9px;
-    }
-
-    .game-name{
-        font-size:14px;
-    }
-
-    .game-category{
-        font-size:11px;
-        padding:4px 10px;
-    }
-
-    .game-size{
-        font-size:12px;
-    }
-
-    .header{
-        align-items:flex-start;
-    }
-
-}
-
-@media(max-width:430px){
-
-    .categories{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .games{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .home h1{
-        font-size:38px;
-    }
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ألعاب فانتازي ستور | FANTASY STORE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, Tahoma, sans-serif;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            padding: 55px 15px 20px;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 46px);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 17px;
+            color: #ccc;
+            letter-spacing: 1px;
+        }
+
+        .main {
+            padding: 30px 20px 60px;
+        }
+
+        .section-title {
+            font-size: 23px;
+            margin-bottom: 35px;
+        }
+
+        .platforms {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .platform {
+            width: 230px;
+            min-height: 155px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 14px;
+            color: #fff;
+            text-decoration: none;
+            background: #000;
+            transition: 0.25s ease;
+        }
+
+        .platform span {
+            font-size: 42px;
+            font-weight: bold;
+            direction: ltr;
+        }
+
+        .platform:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            padding: 20px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 520px) {
+            header {
+                padding-top: 40px;
+            }
+
+            .platform {
+                width: min(100%, 300px);
+                min-height: 125px;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <header>
+        <h1>ألعاب فانتازي ستور</h1>
+        <p>FANTASY STORE</p>
+    </header>
 
-<!-- =========================
-     الصفحة الرئيسية
-========================= -->
+    <main class="main">
+        <h2 class="section-title">اضغط هنا للمزيد من الألعاب</h2>
 
-<section class="home" id="home">
+        <div class="platforms">
 
-    <div class="home-box">
+            <a class="platform" href="ps4.html">
+                <span>PS4</span>
+            </a>
 
-        <div class="logo">
-            F
-        </div>
-
-        <h1>
-            فانتازي ستور PS4
-        </h1>
-
-        <p>
-            كتالوج ألعاب بلايستيشن 4
-        </p>
-
-        <button class="enter-btn" onclick="showCategories()">
-            اضغط هنا لرؤية الألعاب
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     صفحة التصنيفات
-========================= -->
-
-<section class="page" id="categoriesPage">
-
-    <div class="header">
-
-        <div class="header-title">
-
-            <div class="header-icon">
-                🎮
-            </div>
-
-            <div>
-
-                <h2>
-                    تصنيفات ألعاب PS4
-                </h2>
-
-                <p>
-                    اختار نوع الألعاب اللي عايز تشوفه
-                </p>
-
-            </div>
+            <a class="platform" href="ps5.html">
+                <span>PS5</span>
+            </a>
 
         </div>
-
-
-        <button class="back" onclick="showHome()">
-            الرئيسية
-        </button>
-
-    </div>
-
-
-    <div class="categories" id="categories"></div>
-
-</section>
-
-
-
-<!-- =========================
-     صفحة الألعاب
-========================= -->
-
-<section class="page" id="gamesPage">
-
-    <div class="header">
-
-        <div class="header-title">
-
-            <div class="header-icon" id="categoryIcon">
-                🎮
-            </div>
-
-            <div>
-
-                <h2 id="categoryTitle">
-                    الألعاب
-                </h2>
-
-                <p id="categoryDescription">
-                    الألعاب المتوفرة
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <button class="back" onclick="showCategories()">
-            ← التصنيفات
-        </button>
-
-    </div>
-
-
-    <div class="games" id="games"></div>
-
-</section>
-
-
-
-<script>
-
-
-/* =========================
-   التصنيفات
-========================= */
-
-const categoriesData = [
-
-    {
-        id:"action",
-        name:"أكشن",
-        icon:"🎯",
-        description:"ألعاب الأكشن والحركة"
-    },
-
-    {
-        id:"adventure",
-        name:"مغامرات",
-        icon:"🗺️",
-        description:"ألعاب المغامرات والاستكشاف"
-    },
-
-    {
-        id:"horror",
-        name:"رعب",
-        icon:"👻",
-        description:"ألعاب الرعب والإثارة"
-    },
-
-    {
-        id:"kids",
-        name:"أطفال",
-        icon:"👶",
-        description:"ألعاب الأطفال والعائلة"
-    },
-
-    {
-        id:"sports",
-        name:"رياضة",
-        icon:"⚽",
-        description:"ألعاب الرياضة وكرة القدم"
-    },
-
-    {
-        id:"racing",
-        name:"سباق",
-        icon:"🏎️",
-        description:"ألعاب السيارات والسباقات"
-    },
-
-    {
-        id:"fighting",
-        name:"قتال",
-        icon:"🥊",
-        description:"ألعاب القتال"
-    },
-
-    {
-        id:"shooting",
-        name:"تصويب",
-        icon:"🎯",
-        description:"ألعاب التصويب"
-    },
-
-    {
-        id:"local",
-        name:"لاعبين محليًا",
-        icon:"👥",
-        description:"ألعاب شخصين على نفس الجهاز"
-    }
-
-];
-
-
-
-/* =========================
-   الألعاب
-========================= */
-
-const gamesData = [
-
-    {
-        name:"God of War Remastered",
-        category:"action",
-        size:"45 GB",
-        image:"images/god-of-war.jpg"
-    },
-
-    {
-        name:"Uncharted 4",
-        category:"adventure",
-        size:"120 GB",
-        image:"images/uncharted-4.jpg"
-    },
-
-    {
-        name:"Resident Evil 4",
-        category:"horror",
-        size:"60 GB",
-        image:"images/resident-evil-4.jpg"
-    },
-
-    {
-        name:"Crash Bandicoot N. Sane Trilogy",
-        category:"kids",
-        size:"42 GB",
-        image:"images/crash.jpg"
-    },
-
-    {
-        name:"Need for Speed Payback",
-        category:"racing",
-        size:"32 GB",
-        image:"images/nfs-payback.jpg"
-    },
-
-    {
-        name:"Mortal Kombat 11",
-        category:"fighting",
-        size:"55 GB",
-        image:"images/mortal-kombat-11.jpg"
-    },
-
-    {
-        name:"Call of Duty Modern Warfare",
-        category:"shooting",
-        size:"90 GB",
-        image:"images/cod-modern-warfare.jpg"
-    },
-
-    {
-        name:"It Takes Two",
-        category:"local",
-        size:"47 GB",
-        image:"images/it-takes-two.jpg"
-    },
-
-    {
-        name:"EA Sports FC 24",
-        category:"sports",
-        size:"65 GB",
-        image:"images/fc-24.jpg"
-    }
-
-];
-
-
-
-/* =========================
-   عناصر الصفحات
-========================= */
-
-const home =
-document.getElementById("home");
-
-const categoriesPage =
-document.getElementById("categoriesPage");
-
-const gamesPage =
-document.getElementById("gamesPage");
-
-const categories =
-document.getElementById("categories");
-
-const games =
-document.getElementById("games");
-
-
-
-/* =========================
-   الرئيسية
-========================= */
-
-function showHome(){
-
-    home.style.display="flex";
-
-    categoriesPage.classList.remove("active");
-
-    gamesPage.classList.remove("active");
-
-    window.scrollTo(0,0);
-
-}
-
-
-
-/* =========================
-   التصنيفات
-========================= */
-
-function showCategories(){
-
-    home.style.display="none";
-
-    gamesPage.classList.remove("active");
-
-    categoriesPage.classList.add("active");
-
-    window.scrollTo(0,0);
-
-}
-
-
-
-/* =========================
-   عرض التصنيفات
-========================= */
-
-function renderCategories(){
-
-    categories.innerHTML="";
-
-    categoriesData.forEach(category => {
-
-        const count =
-        gamesData.filter(
-            game => game.category === category.id
-        ).length;
-
-        const box =
-        document.createElement("div");
-
-        box.className="category";
-
-        box.innerHTML=`
-
-            <div class="category-icon">
-                ${category.icon}
-            </div>
-
-            <h3>
-                ${category.name}
-            </h3>
-
-            <span>
-                ${category.description}
-            </span>
-
-            <span>
-                ${count} ألعاب
-            </span>
-
-        `;
-
-        box.onclick=function(){
-
-            openCategory(category);
-
-        };
-
-        categories.appendChild(box);
-
-    });
-
-}
-
-
-
-/* =========================
-   فتح تصنيف
-========================= */
-
-function openCategory(category){
-
-    home.style.display="none";
-
-    categoriesPage.classList.remove("active");
-
-    gamesPage.classList.add("active");
-
-
-    document.getElementById("categoryIcon")
-    .textContent=category.icon;
-
-
-    document.getElementById("categoryTitle")
-    .textContent="ألعاب " + category.name;
-
-
-    document.getElementById("categoryDescription")
-    .textContent=category.description;
-
-
-    renderGames(category.id);
-
-    window.scrollTo(0,0);
-
-}
-
-
-
-/* =========================
-   عرض الألعاب
-========================= */
-
-function renderGames(categoryId){
-
-    games.innerHTML="";
-
-    const filtered =
-    gamesData.filter(
-        game => game.category === categoryId
-    );
-
-
-    if(filtered.length===0){
-
-        games.innerHTML=`
-
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:50px;
-                color:#aab5c7;
-            ">
-
-                لا توجد ألعاب في هذا التصنيف حاليًا.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    filtered.forEach(game => {
-
-        const card =
-        document.createElement("div");
-
-        card.className="game";
-
-
-        card.innerHTML=`
-
-            <div class="game-image">
-
-                <img
-                    src="${game.image}"
-                    alt="${game.name}"
-                    loading="lazy"
-                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;height:100%;display:flex;align-items:center;justify-content:center;color:#718096;padding:20px&quot;>الصورة غير موجودة</div>'"
-                >
-
-            </div>
-
-
-            <div class="game-name">
-                ${game.name}
-            </div>
-
-
-            <div class="game-category">
-                ${getCategoryName(game.category)}
-            </div>
-
-
-            <div class="game-size">
-                💾 المساحة:
-                <span>${game.size}</span>
-            </div>
-
-        `;
-
-
-        games.appendChild(card);
-
-    });
-
-}
-
-
-
-/* =========================
-   اسم التصنيف
-========================= */
-
-function getCategoryName(id){
-
-    const category =
-    categoriesData.find(
-        item => item.id === id
-    );
-
-    return category
-        ? category.name
-        : "";
-
-}
-
-
-
-/* =========================
-   تشغيل الموقع
-========================= */
-
-renderCategories();
-
-showHome();
-
-</script>
+    </main>
+
+    <footer>
+        FANTASY STORE © 2026
+    </footer>
 
 </body>
 </html>
