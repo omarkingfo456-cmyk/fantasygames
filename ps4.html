@@ -1,434 +1,322 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08090f">
-  <title>FANTASY STORE | ألعاب PS4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg: #08090f;
-      --panel: #121420;
-      --panel2: #191b2b;
-      --purple: #7546ff;
-      --cyan: #35d9ff;
-      --text: #f5f5ff;
-      --muted: #a6a8bd;
-      --border: #292b40;
-    }
+<title>ألعاب PS4 | FANTASY STORE</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Tahoma, Arial, sans-serif;
-    }
+body{
+  margin:0;
+  background:#080812;
+  color:#fff;
+  font-family:Arial,Tahoma,sans-serif;
+}
 
-    button, input {
-      font: inherit;
-    }
+header{
+  text-align:center;
+  padding:25px 15px;
+  background:#111120;
+  border-bottom:1px solid #38304f;
+}
 
-    header {
-      padding: 30px 15px;
-      text-align: center;
-      background: linear-gradient(135deg, #21113d, #101522, #08090f);
-      border-bottom: 1px solid var(--border);
-    }
+header h1{
+  color:#c59aff;
+  margin:0;
+  font-size:30px;
+}
 
-    .logo {
-      margin: 0;
-      font-size: clamp(28px, 6vw, 44px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px #7546ff66;
-    }
+header p{
+  color:#c4bfd2;
+  margin-bottom:0;
+}
 
-    .logo span {
-      color: var(--purple);
-    }
+.container{
+  width:min(1150px,94%);
+  margin:25px auto;
+}
 
-    .subtitle {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
 
-    .top-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
+input,select{
+  padding:12px;
+  border-radius:9px;
+  border:1px solid #403754;
+  background:#121222;
+  color:#fff;
+  font-size:15px;
+}
 
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 11px 18px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--panel2);
-      color: var(--text);
-      cursor: pointer;
-      text-decoration: none;
-    }
+#search{
+  flex:1;
+  min-width:180px;
+}
 
-    .btn-primary {
-      background: linear-gradient(135deg, #7546ff, #5325d5);
-      border-color: transparent;
-      color: white;
-      font-weight: bold;
-    }
+a.button{
+  display:inline-block;
+  text-decoration:none;
+  background:#b486ff;
+  color:#160c27;
+  padding:12px 16px;
+  border-radius:9px;
+  font-weight:bold;
+}
 
-    .btn:hover {
-      border-color: var(--purple);
-    }
+#gamesCount{
+  color:#c9b2ff;
+  margin-bottom:18px;
+}
 
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 25px 15px 45px;
-    }
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:18px;
+}
 
-    .search {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      outline: none;
-      background: var(--panel);
-      color: white;
-    }
+.game{
+  overflow:hidden;
+  border-radius:13px;
+  background:#131323;
+  border:1px solid #342d4b;
+  transition:transform .2s;
+}
 
-    .search:focus {
-      border-color: var(--purple);
-    }
+.game:hover{
+  transform:translateY(-4px);
+}
 
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-bottom: 25px;
-    }
+.cover{
+  width:100%;
+  height:245px;
+  object-fit:cover;
+  display:block;
+  background:#202033;
+}
 
-    .category {
-      padding: 9px 15px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--panel);
-      color: var(--muted);
-      cursor: pointer;
-    }
+.no-image{
+  height:245px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#a99bbf;
+  background:linear-gradient(145deg,#201b36,#0c0c17);
+}
 
-    .category.active {
-      color: white;
-      background: #7546ff33;
-      border-color: var(--purple);
-    }
+.info{
+  padding:14px;
+}
 
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
+.info h3{
+  color:#d4b7ff;
+  font-size:18px;
+  margin:0 0 10px;
+  overflow-wrap:anywhere;
+}
 
-    .section-heading h2 {
-      margin: 0;
-      font-size: 21px;
-    }
+.size{
+  color:#bca1ff;
+  font-weight:bold;
+  margin:8px 0;
+}
 
-    .count {
-      color: var(--cyan);
-      font-size: 13px;
-    }
+.description{
+  color:#c6c1d3;
+  line-height:1.7;
+  font-size:14px;
+  overflow-wrap:anywhere;
+  white-space:pre-wrap;
+}
 
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
-    }
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:45px 15px;
+  border:1px dashed #51436f;
+  border-radius:13px;
+  color:#c8bfd9;
+  line-height:2;
+}
 
-    .empty-state {
-      padding: 55px 15px;
-      text-align: center;
-      border: 1px dashed var(--border);
-      border-radius: 14px;
-      background: var(--panel);
-    }
+footer{
+  text-align:center;
+  color:#8f879f;
+  padding:25px 12px;
+  font-size:13px;
+}
 
-    .empty-icon {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
-
-    .empty-state h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-    }
-
-    .empty-state p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 22px 15px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .light-mode {
-      --bg: #f4f3fa;
-      --panel: #ffffff;
-      --panel2: #eeeaf9;
-      --text: #201833;
-      --muted: #69647a;
-      --border: #ded9ed;
-    }
-
-    .light-mode header {
-      background: linear-gradient(135deg, #e7dcff, #f5f4ff);
-    }
-
-    .light-mode .search {
-      color: #201833;
-    }
-
-    @media (max-width: 400px) {
-      .games-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-  </style>
+@media(max-width:480px){
+  header h1{font-size:25px}
+  .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cover,.no-image{height:190px}
+  .info{padding:10px}
+  .info h3{font-size:15px}
+  .description{font-size:13px}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1 class="logo">FANTASY <span>STORE</span></h1>
-    <p class="subtitle">مكتبة ألعاب PlayStation 4</p>
+<header>
+  <h1>FANTASY STORE</h1>
+  <p>مكتبة ألعاب PlayStation 4</p>
+</header>
 
-    <div class="top-actions">
-      <a class="btn btn-primary" href="edit.html">⚙️ تعديل</a>
-      <button class="btn" id="themeButton" type="button">
-        ☀️ تغيير المظهر
-      </button>
-    </div>
-  </header>
+<main class="container">
 
-  <main>
-    <input
-      class="search"
-      id="searchInput"
-      type="search"
-      placeholder="🔎 ابحث عن لعبة..."
-      aria-label="البحث عن لعبة"
-    >
+  <div class="topbar">
+    <input id="search" type="search" placeholder="ابحث عن لعبة...">
 
-    <nav class="categories" id="categories" aria-label="تصنيفات الألعاب">
-      <button class="category active" data-category="all">كل الألعاب</button>
-      <button class="category" data-category="action">أكشن</button>
-      <button class="category" data-category="adventure">مغامرات</button>
-      <button class="category" data-category="horror">رعب</button>
-      <button class="category" data-category="sports">رياضة</button>
-      <button class="category" data-category="racing">سباق</button>
-      <button class="category" data-category="kids">أطفال</button>
-    </nav>
+    <select id="category">
+      <option value="">كل التصنيفات</option>
+      <option value="أكشن">أكشن</option>
+      <option value="مغامرات">مغامرات</option>
+      <option value="رعب">رعب</option>
+      <option value="أطفال">أطفال</option>
+      <option value="رياضة">رياضة</option>
+      <option value="سباقات">سباقات</option>
+      <option value="أخرى">أخرى</option>
+    </select>
 
-    <div class="section-heading">
-      <h2>🎮 مكتبة الألعاب</h2>
-      <span class="count" id="gamesCount">0 لعبة</span>
-    </div>
+    <a class="button" href="edit.html">إدارة الألعاب</a>
+  </div>
 
-    <section class="games-grid" id="gamesList"></section>
+  <p id="gamesCount">جاري تحميل الألعاب...</p>
 
-    <div class="empty-state" id="emptyState">
-      <div class="empty-icon">🎮</div>
-      <h3>مكتبة الألعاب فارغة</h3>
-      <p>
-        لم تتم إضافة أي ألعاب حتى الآن.<br>
-        اضغط على «تعديل» لإضافة ألعاب جديدة إلى المكتبة.
-      </p>
-    </div>
-  </main>
+  <section id="games" class="games"></section>
 
-  <footer>
-    FANTASY STORE © <span id="currentYear"></span>
-  </footer>
+</main>
 
-  <script>
-    "use strict";
+<footer>
+  FANTASY STORE — PS4 GAMES
+</footer>
 
-    const storageKey = "fantasyStoreManagedGamesV1";
+<script>
+const STORAGE_KEY = "fantasyStoreManagedGamesV1";
 
-    const gamesList = document.getElementById("gamesList");
-    const searchInput = document.getElementById("searchInput");
-    const gamesCount = document.getElementById("gamesCount");
-    const emptyState = document.getElementById("emptyState");
+const gamesContainer = document.getElementById("games");
+const searchInput = document.getElementById("search");
+const categoryInput = document.getElementById("category");
+const gamesCount = document.getElementById("gamesCount");
 
-    let selectedCategory = "all";
+function loadGames(){
+  try{
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(data) ? data : [];
+  }catch(error){
+    return [];
+  }
+}
 
-    function loadGames() {
-      try {
-        const games = JSON.parse(localStorage.getItem(storageKey) || "[]");
-        return Array.isArray(games) ? games : [];
-      } catch {
-        return [];
-      }
-    }
+function createTextElement(tag,className,text){
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text || "";
+  return element;
+}
 
-    function normalizeCategory(category) {
-      const categories = {
-        "أكشن": "action",
-        "مغامرات": "adventure",
-        "رعب": "horror",
-        "رياضة": "sports",
-        "سباق": "racing",
-        "أطفال": "kids"
+function renderGames(){
+  const games = loadGames();
+
+  const query = searchInput.value.trim().toLowerCase();
+  const selectedCategory = categoryInput.value;
+
+  const filtered = games.filter(game=>{
+    const matchesSearch =
+      (game.name || "").toLowerCase().includes(query) ||
+      (game.description || "").toLowerCase().includes(query);
+
+    const matchesCategory =
+      !selectedCategory || game.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  gamesContainer.replaceChildren();
+
+  gamesCount.textContent = "عدد الألعاب: " + filtered.length;
+
+  if(filtered.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "empty";
+
+    empty.textContent = games.length === 0
+      ? "مفيش ألعاب مضافة حاليًا."
+      : "مفيش ألعاب مطابقة للبحث.";
+
+    gamesContainer.appendChild(empty);
+    return;
+  }
+
+  filtered.forEach(game=>{
+    const card = document.createElement("article");
+    card.className = "game";
+
+    if(game.image){
+      const image = document.createElement("img");
+      image.className = "cover";
+      image.src = game.image;
+      image.alt = game.name || "غلاف اللعبة";
+      image.loading = "lazy";
+
+      image.onerror = ()=>{
+        const placeholder = document.createElement("div");
+        placeholder.className = "no-image";
+        placeholder.textContent = "الصورة غير متاحة";
+        image.replaceWith(placeholder);
       };
 
-      return categories[category] || category || "action";
+      card.appendChild(image);
+    }else{
+      const placeholder = document.createElement("div");
+      placeholder.className = "no-image";
+      placeholder.textContent = "لا توجد صورة";
+      card.appendChild(placeholder);
     }
 
-    function renderGames() {
-      const searchTerm = searchInput.value.trim().toLowerCase();
-      const games = loadGames();
+    const info = document.createElement("div");
+    info.className = "info";
 
-      const filteredGames = games.filter(game => {
-        if (!game || !game.name) return false;
+    info.appendChild(
+      createTextElement("h3","",game.name || "لعبة بدون اسم")
+    );
 
-        const matchesSearch = String(game.name)
-          .toLowerCase()
-          .includes(searchTerm);
+    info.appendChild(
+      createTextElement(
+        "div",
+        "size",
+        "الحجم: " + (game.size || "غير محدد")
+      )
+    );
 
-        const category = normalizeCategory(game.category);
-        const matchesCategory =
-          selectedCategory === "all" ||
-          category === selectedCategory;
+    info.appendChild(
+      createTextElement(
+        "div",
+        "description",
+        game.description || "لا يوجد وصف للعبة."
+      )
+    );
 
-        return matchesSearch && matchesCategory;
-      });
+    card.appendChild(info);
+    gamesContainer.appendChild(card);
+  });
+}
 
-      gamesList.replaceChildren();
+searchInput.addEventListener("input",renderGames);
+categoryInput.addEventListener("change",renderGames);
 
-      filteredGames.forEach(game => {
-        const card = document.createElement("article");
-        card.className = "game-card";
-
-        if (game.image) {
-          const image = document.createElement("img");
-          image.src = game.image;
-          image.alt = game.name;
-          image.loading = "lazy";
-          image.style.cssText =
-            "width:100%;aspect-ratio:3/4;object-fit:cover;display:block;";
-
-          image.addEventListener("error", () => {
-            image.remove();
-          });
-
-          card.appendChild(image);
-        }
-
-        const info = document.createElement("div");
-        info.style.cssText = "padding:12px;";
-
-        const title = document.createElement("h3");
-        title.textContent = game.name;
-        title.style.cssText = "font-size:15px;line-height:1.7;";
-
-        const size = document.createElement("p");
-        size.textContent = `${game.size ?? "غير محدد"}${String(game.size ?? "").includes("جيجابايت") ? "" : " جيجابايت"}`;
-        size.style.color = "#35d9ff";
-
-        const details = document.createElement("button");
-        details.className = "btn btn-primary";
-        details.type = "button";
-        details.textContent = "عرض التفاصيل";
-        details.style.width = "100%";
-
-        details.addEventListener("click", () => {
-          const categoryNames = {
-            action: "أكشن",
-            adventure: "مغامرات",
-            horror: "رعب",
-            sports: "رياضة",
-            racing: "سباق",
-            kids: "أطفال"
-          };
-
-          const category = normalizeCategory(game.category);
-
-          alert(
-            "اسم اللعبة: " + game.name +
-            "\nالمساحة: " + (game.size ?? "غير محدد") +
-            "\nالتصنيف: " + (categoryNames[category] || category) +
-            "\nعدد اللاعبين: " + (game.players || "غير محدد") +
-            "\nالإنترنت: " + (game.internet || "غير محدد") +
-            "\nالوصف: " + (game.description || "لا يوجد وصف")
-          );
-        });
-
-        info.append(title, size, details);
-        card.appendChild(info);
-        gamesList.appendChild(card);
-      });
-
-      gamesCount.textContent = `${filteredGames.length} لعبة`;
-      emptyState.style.display = filteredGames.length ? "none" : "block";
-    }
-
-    searchInput.addEventListener("input", renderGames);
-
-    document.getElementById("categories").addEventListener("click", event => {
-      const button = event.target.closest("[data-category]");
-      if (!button) return;
-
-      selectedCategory = button.dataset.category;
-
-      document.querySelectorAll(".category").forEach(item => {
-        item.classList.toggle("active", item === button);
-      });
-
-      renderGames();
-    });
-
-    document.getElementById("themeButton").addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-
-      localStorage.setItem(
-        "fantasyStoreLightMode",
-        document.body.classList.contains("light-mode") ? "on" : "off"
-      );
-    });
-
-    if (localStorage.getItem("fantasyStoreLightMode") === "on") {
-      document.body.classList.add("light-mode");
-    }
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    window.addEventListener("storage", event => {
-      if (event.key === storageKey) renderGames();
-    });
-
-    renderGames();
-  </script>
+renderGames();
+</script>
 
 </body>
 </html>
