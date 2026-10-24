@@ -1,72 +1,381 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
-    <title>ألعاب PS4 | FANTASY STORE</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/games.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ألعاب PS4 | FANTASY STORE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #22212b;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 35px 15px 25px;
+    border-bottom: 1px solid #eeeeF5;
+}
+
+header h1 {
+    margin: 0 0 12px;
+    font-size: 35px;
+}
+
+header h1 span {
+    color: #7138d7;
+    direction: ltr;
+    display: inline-block;
+}
+
+header p {
+    color: #777585;
+    margin: 0;
+    line-height: 1.8;
+}
+
+.home {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 20px;
+    color: #7138d7;
+    text-decoration: none;
+    border: 1px solid #7138d7;
+    border-radius: 8px;
+}
+
+.container {
+    width: 94%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin: 0 0 25px;
+    font-size: 23px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.category {
+    min-height: 100px;
+    padding: 15px 8px;
+    background: #ffffff;
+    border: 1px solid #ded9e9;
+    border-radius: 12px;
+    color: #302d3b;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.category:hover {
+    border-color: #7138d7;
+    color: #7138d7;
+    background: #f8f4ff;
+}
+
+.category.active {
+    background: #7138d7;
+    color: #ffffff;
+    border-color: #7138d7;
+    box-shadow: 0 5px 15px #7138d733;
+}
+
+.search {
+    display: block;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto 25px;
+    padding: 14px;
+    border: 1px solid #ded9e9;
+    border-radius: 9px;
+    background: white;
+    color: #22212b;
+    font-size: 16px;
+    outline: none;
+}
+
+.search:focus {
+    border-color: #7138d7;
+}
+
+.games-title {
+    margin: 0 0 20px;
+    font-size: 23px;
+}
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.game {
+    overflow: hidden;
+    background: white;
+    border: 1px solid #e5e2ed;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.game:hover {
+    border-color: #7138d7;
+    transform: translateY(-3px);
+}
+
+.cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: #f4f0fb;
+    color: #7138d7;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    direction: ltr;
+}
+
+.game-info {
+    padding: 14px;
+}
+
+.game h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.details {
+    width: 100%;
+    padding: 11px;
+    background: white;
+    color: #7138d7;
+    border: 1px solid #7138d7;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.details:hover {
+    background: #7138d7;
+    color: white;
+}
+
+.empty {
+    padding: 30px 10px;
+    text-align: center;
+    color: #777585;
+}
+
+footer {
+    padding: 25px 10px;
+    text-align: center;
+    color: #777585;
+    border-top: 1px solid #eeeeF5;
+}
+
+@media (max-width: 800px) {
+    .categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .games {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    .games {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .category {
+        min-height: 80px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+    .games {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<header class="site-header">
-    <a class="back-link" href="index.html">الرئيسية</a>
+<header>
     <h1>ألعاب <span>PS4</span></h1>
-    <p>اكتشف ألعابك المفضلة في FANTASY STORE</p>
+    <p>اكتشف ألعابك المفضلة في فانتازي ستور</p>
+    <a class="home" href="index.html">الصفحة الرئيسية</a>
 </header>
 
 <main class="container">
 
-    <section class="search-area">
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="ابحث عن اسم اللعبة..."
-            aria-label="البحث عن لعبة"
-        >
-    </section>
+    <h2 class="section-title">اختار قسم الألعاب</h2>
 
-    <nav class="categories" aria-label="أقسام الألعاب">
-        <button class="category active" data-category="all">كل الألعاب</button>
-        <button class="category" data-category="adventure">مغامرات</button>
-        <button class="category" data-category="horror">رعب</button>
-        <button class="category" data-category="action">أكشن</button>
-        <button class="category" data-category="story">قصص</button>
-        <button class="category" data-category="local">لعب محلي</button>
-        <button class="category" data-category="racing">سباقات</button>
-        <button class="category" data-category="sports">رياضة</button>
-        <button class="category" data-category="kids">أطفال</button>
-    </nav>
+    <div class="categories">
+        <button class="category active" data-cat="all">كل الألعاب</button>
+        <button class="category" data-cat="adventure">مغامرات</button>
+        <button class="category" data-cat="horror">رعب</button>
+        <button class="category" data-cat="action">أكشن</button>
+        <button class="category" data-cat="story">قصص</button>
+        <button class="category" data-cat="local">لعب محلي</button>
+        <button class="category" data-cat="racing">سباقات</button>
+        <button class="category" data-cat="sports">رياضة</button>
+        <button class="category" data-cat="kids">ألعاب أطفال</button>
+    </div>
 
-    <div class="results-info" id="resultsInfo" aria-live="polite"></div>
+    <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="ابحث عن اسم اللعبة..."
+        aria-label="ابحث عن لعبة"
+    >
 
-    <section class="games-grid" id="gamesGrid"></section>
+    <h2 class="games-title">الألعاب</h2>
 
-    <p class="empty-message" id="emptyMessage" hidden>
-        مفيش ألعاب مطابقة للبحث ده.
-    </p>
+    <div id="games" class="games"></div>
+
+    <p id="empty" class="empty" hidden>لا توجد ألعاب في هذا القسم حاليًا.</p>
 
 </main>
-<div class="modal" id="gameModal" hidden>
-    <div class="modal-content" role="dialog" aria-modal="true"
-         aria-labelledby="modalTitle">
 
-        <button class="modal-close" id="modalClose" type="button">
-            إغلاق ✕
-        </button>
+<footer>FANTASY STORE © 2026</footer>
 
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription"></p>
-        <p id="modalSize"></p>
-        <p id="modalPlayers"></p>
-        <p id="modalOffline"></p>
+<script>
+const games = [
+    {
+        name: "God of War Ragnarök",
+        categories: ["adventure", "action", "story"]
+    },
+    {
+        name: "Uncharted 4",
+        categories: ["adventure", "action", "story"]
+    },
+    {
+        name: "The Last of Us Part I",
+        categories: ["adventure", "action", "story", "horror"]
+    },
+    {
+        name: "Grand Theft Auto V",
+        categories: ["action", "adventure"]
+    },
+    {
+        name: "Resident Evil 4",
+        categories: ["horror", "action", "adventure"]
+    },
+    {
+        name: "Gran Turismo 7",
+        categories: ["racing"]
+    },
+    {
+        name: "EA SPORTS FC",
+        categories: ["sports", "local"]
+    },
+    {
+        name: "Minecraft",
+        categories: ["adventure", "kids", "local"]
+    }
+];
 
-    </div>
-</div>
-<footer class="site-footer">
-    <p>FANTASY STORE © 2026</p>
-</footer>
+const gamesContainer = document.getElementById("games");
+const search = document.getElementById("search");
+const empty = document.getElementById("empty");
+const buttons = document.querySelectorAll(".category");
+
+let currentCategory = "all";
+
+function showGames() {
+    const query = search.value.trim().toLowerCase();
+
+    const filtered = games.filter(game => {
+        const categoryMatch =
+            currentCategory === "all" ||
+            game.categories.includes(currentCategory);
+
+        const nameMatch = game.name.toLowerCase().includes(query);
+
+        return categoryMatch && nameMatch;
+    });
+
+    gamesContainer.innerHTML = "";
+
+    filtered.forEach(game => {
+        const card = document.createElement("article");
+        card.className = "game";
+
+        const cover = document.createElement("div");
+        cover.className = "cover";
+        cover.textContent = game.name;
+
+        const info = document.createElement("div");
+        info.className = "game-info";
+
+        const title = document.createElement("h3");
+        title.textContent = game.name;
+
+        const details = document.createElement("button");
+        details.className = "details";
+        details.textContent = "عرض التفاصيل";
+
+        details.addEventListener("click", () => {
+            alert(
+                "اسم اللعبة: " + game.name +
+                "\n\nالأقسام: " +
+                game.categories.join("، ") +
+                "\n\nهنضيف تفاصيل اللعبة وصورة غلافها الحقيقية في الخطوة التالية."
+            );
+        });
+
+        info.append(title, details);
+        card.append(cover, info);
+        gamesContainer.appendChild(card);
+    });
+
+    empty.hidden = filtered.length > 0;
+}
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        currentCategory = button.dataset.cat;
+
+        buttons.forEach(item => {
+            item.classList.toggle("active", item === button);
+        });
+
+        showGames();
+    });
+});
+
+search.addEventListener("input", showGames);
+
+showGames();
+</script>
 
 </body>
 </html>
