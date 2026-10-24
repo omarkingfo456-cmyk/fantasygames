@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>ألعاب PS4 | FANTASY STORE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/games.js" defer></script>
+</head>
+<body>
 
+<header class="site-header">
+    <a class="back-link" href="index.html">الرئيسية</a>
+    <h1>ألعاب <span>PS4</span></h1>
+    <p>اكتشف ألعابك المفضلة في FANTASY STORE</p>
+</header>
+
+<main class="container">
+
+    <section class="search-area">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="ابحث عن اسم اللعبة..."
+            aria-label="البحث عن لعبة"
+        >
+    </section>
+
+    <nav class="categories" aria-label="أقسام الألعاب">
+        <button class="category active" data-category="all">كل الألعاب</button>
+        <button class="category" data-category="adventure">مغامرات</button>
+        <button class="category" data-category="horror">رعب</button>
+        <button class="category" data-category="action">أكشن</button>
+        <button class="category" data-category="story">قصص</button>
+        <button class="category" data-category="local">لعب محلي</button>
+        <button class="category" data-category="racing">سباقات</button>
+        <button class="category" data-category="sports">رياضة</button>
+        <button class="category" data-category="kids">أطفال</button>
+    </nav>
+
+    <div class="results-info" id="resultsInfo" aria-live="polite"></div>
+
+    <section class="games-grid" id="gamesGrid"></section>
+
+    <p class="empty-message" id="emptyMessage" hidden>
+        مفيش ألعاب مطابقة للبحث ده.
+    </p>
+
+</main>
+
+<footer class="site-footer">
+    <p>FANTASY STORE © 2026</p>
+</footer>
+
+</body>
+</html>
