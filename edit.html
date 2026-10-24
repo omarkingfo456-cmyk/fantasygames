@@ -1,1 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تعديل | FANTASY STORE</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #080914;
+  color: #f4f3ff;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+header {
+  background: #101126;
+  border-bottom: 1px solid #5228a8;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #8b5cff;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  background: #30205d;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 20px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #aaa9c5;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.panel {
+  background: #101126;
+  border: 1px solid #30265b;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-size: 19px;
+  margin-top: 0;
+  color: #b9a0ff;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 14px;
+  color: #ddd9f8;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #37345e;
+  background: #090b1a;
+  color: white;
+  font: inherit;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #8855ff;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input[type="file"] {
+  padding: 10px;
+}
+
+.preview {
+  display: none;
+  width: 160px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #6b49d7;
+  margin-top: 10px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: bold;
+}
+
+.primary {
+  background: linear-gradient(110deg, #5520d5, #853cff);
+  color: white;
+}
+
+.secondary {
+  background: #242441;
+  color: white;
+  border: 1px solid #49456f;
+}
+
+.danger {
+  background: #721e39;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.search {
+  margin-bottom: 16px;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 15px;
+}
+
+.game-card {
+  background: #0a0c1b;
+  border: 1px solid #302b52;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.game-card img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #050610;
+}
+
+.game-info {
+  padding: 14px;
+}
+
+.game-info h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.game-info p {
+  color: #c1bfd8;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+
+.game-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.game-actions button {
+  flex: 1;
+  padding: 9px 6px;
+  font-size: 13px;
+}
+
+.notice {
+  color: #ffd98a;
+  font-size: 13px;
+  line-height: 1.9;
+  margin-top: 14px;
+}
+
+.empty {
+  text-align: center;
+  color: #aaa9c5;
+  padding: 25px;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  header {
+    padding: 13px;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">FANTASY <span>STORE</span></div>
+  <a href="ps4.html">العودة للألعاب ←</a>
+</header>
+
+<main class="container">
+
+  <h1>⚙️ تعديل</h1>
+  <p class="subtitle">
+    أضف ألعابًا جديدة أو عدّل بيانات الألعاب الموجودة واحذف الألعاب التي لم تعد تريد عرضها.
+  </p>
+
+  <section class="panel">
+    <h2 id="formTitle">➕ إضافة لعبة جديدة</h2>
+
+    <form id="gameForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="gameName">اسم اللعبة *</label>
+          <input id="gameName" required maxlength="120"
+                 placeholder="مثال: God of War">
+        </div>
+
+        <div class="field">
+          <label for="gameSize">مساحة اللعبة (GB) *</label>
+          <input id="gameSize" required type="number"
+                 min="0" max="10000" step="0.1"
+                 placeholder="مثال: 45">
+        </div>
+
+        <div class="field">
+          <label for="gameCategory">تصنيف اللعبة *</label>
+          <select id="gameCategory" required>
+            <option value="action">أكشن</option>
+            <option value="adventure">مغامرات</option>
+            <option value="horror">رعب</option>
+            <option value="sports">رياضة</option>
+            <option value="fighting">قتال</option>
+            <option value="family">أطفال وعائلة</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="gamePlayers">عدد اللاعبين</label>
+          <select id="gamePlayers">
+            <option value="لاعب واحد">لاعب واحد</option>
+            <option value="لاعبان محليًا">لاعبان محليًا</option>
+            <option value="أكثر من لاعبين">أكثر من لاعبين</option>
+            <option value="متعدد اللاعبين عبر الإنترنت">متعدد اللاعبين عبر الإنترنت</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="gameInternet">حالة الإنترنت</label>
+          <select id="gameInternet">
+            <option value="offline">أوفلاين</option>
+            <option value="online">أونلاين</option>
+            <option value="both">أوفلاين وأونلاين</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="gameImage">صورة غلاف اللعبة *</label>
+          <input id="gameImage" type="file"
+                 accept="image/jpeg,image/png,image/webp"
+                 required>
+          <img id="imagePreview" class="preview" alt="معاينة صورة اللعبة">
+        </div>
+
+        <div class="field full">
+          <label for="gameDescription">تفاصيل اللعبة</label>
+          <textarea id="gameDescription"
+                    maxlength="3000"
+                    placeholder="اكتب قصة اللعبة ومميزاتها وتفاصيلها هنا..."></textarea>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <button class="primary" type="submit" id="saveButton">
+          ➕ إضافة اللعبة
+        </button>
+
+        <button class="secondary" type="button"
+                id="cancelButton" hidden>
+          إلغاء التعديل
+        </button>
+      </div>
+
+      <p class="notice">
+        تنبيه: الصور والبيانات في هذه النسخة تُحفظ على المتصفح الحالي فقط.
+        لا تمسح بيانات الموقع من المتصفح حتى لا تفقدها.
+        الصور الكبيرة قد تستهلك مساحة التخزين المتاحة.
+      </p>
+
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>🎮 الألعاب المضافة من صفحة التعديل</h2>
+
+    <input class="search" id="searchInput"
+           placeholder="ابحث عن لعبة بالاسم...">
+
+    <div class="game-list" id="gameList"></div>
+  </section>
+
+</main>
+
+<script>
+const STORAGE_KEY = "fantasyStoreManagedGamesV1";
+
+const form = document.getElementById("gameForm");
+const nameInput = document.getElementById("gameName");
+const sizeInput = document.getElementById("gameSize");
+const categoryInput = document.getElementById("gameCategory");
+const playersInput = document.getElementById("gamePlayers");
+const internetInput = document.getElementById("gameInternet");
+const imageInput = document.getElementById("gameImage");
+const descriptionInput = document.getElementById("gameDescription");
+const preview = document.getElementById("imagePreview");
+const gameList = document.getElementById("gameList");
+const searchInput = document.getElementById("searchInput");
+const saveButton = document.getElementById("saveButton");
+const cancelButton = document.getElementById("cancelButton");
+const formTitle = document.getElementById("formTitle");
+
+let games = loadGames();
+let editingId = null;
+let selectedImage = "";
+
+function loadGames() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const parsed = saved ? JSON.parse(saved) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveGames() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+    return true;
+  } catch (error) {
+    alert("مساحة التخزين غير كافية. جرّب صورة أصغر.");
+    return false;
+  }
+}
+
+function makeId() {
+  return Date.now().toString(36) +
+    Math.random().toString(36).slice(2, 8);
+}
+
+function showPreview(src) {
+  preview.src = src;
+  preview.style.display = "block";
+}
+
+imageInput.addEventListener("change", function () {
+  const file = this.files && this.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("اختار ملف صورة صالح.");
+    this.value = "";
+    return;
+  }
+
+  // ضغط الصورة لتقليل مساحة التخزين
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const image = new Image();
+
+    image.onload = function () {
+      const maxSide = 700;
+      const scale = Math.min(
+        1,
+        maxSide / Math.max(image.width, image.height)
+      );
+
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(image.width * scale);
+      canvas.height = Math.round(image.height * scale);
+
+      const context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+      selectedImage = canvas.toDataURL("image/jpeg", 0.78);
+      showPreview(selectedImage);
+    };
+
+    image.onerror = function () {
+      alert("تعذر قراءة الصورة. جرّب صورة أخرى.");
+    };
+
+    image.src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const size = Number(sizeInput.value);
+
+  if (!name || sizeInput.value === "" ||
+      !Number.isFinite(size) || size < 0) {
+    alert("اكتب اسم اللعبة ومساحتها بشكل صحيح.");
+    return;
+  }
+
+  const existing = editingId
+    ? games.find(game => game.id === editingId)
+    : null;
+
+  const image = selectedImage ||
+    (existing ? existing.image : "");
+
+  if (!image) {
+    alert("اختار صورة للعبة أولًا.");
+    return;
+  }
+
+  const game = {
+    id: editingId || makeId(),
+    name: name,
+    size: size,
+    category: categoryInput.value,
+    players: playersInput.value,
+    internet: internetInput.value,
+    image: image,
+    description: descriptionInput.value.trim()
+  };
+
+  const previousGames = [...games];
+
+  if (editingId) {
+    games = games.map(item =>
+      item.id === editingId ? game : item
+    );
+  } else {
+    games.unshift(game);
+  }
+
+  if (!saveGames()) {
+    games = previousGames;
+    return;
+  }
+
+  alert(editingId ? "تم تعديل بيانات اللعبة." : "تمت إضافة اللعبة.");
+
+  resetForm();
+  renderGames();
+});
+
+function resetForm() {
+  form.reset();
+  editingId = null;
+  selectedImage = "";
+  imageInput.required = true;
+  preview.removeAttribute("src");
+  preview.style.display = "none";
+  saveButton.textContent = "➕ إضافة اللعبة";
+  formTitle.textContent = "➕ إضافة لعبة جديدة";
+  cancelButton.hidden = true;
+}
+
+cancelButton.addEventListener("click", resetForm);
+
+function editGame(id) {
+  const game = games.find(item => item.id === id);
+  if (!game) return;
+
+  editingId = id;
+  selectedImage = game.image || "";
+
+  nameInput.value = game.name;
+  sizeInput.value = game.size;
+  categoryInput.value = game.category;
+  playersInput.value = game.players;
+  internetInput.value = game.internet;
+  descriptionInput.value = game.description || "";
+
+  if (selectedImage) showPreview(selectedImage);
+
+  imageInput.required = false;
+  saveButton.textContent = "💾 حفظ التعديلات";
+  formTitle.textContent = "✏️ تعديل بيانات اللعبة";
+  cancelButton.hidden = false;
+
+  form.scrollIntoView({ behavior: "smooth" });
+}
+
+function deleteGame(id) {
+  const game = games.find(item => item.id === id);
+  if (!game) return;
+
+  if (!confirm('هل تريد حذف "' + game.name + '"؟')) return;
+
+  const previousGames = [...games];
+  games = games.filter(item => item.id !== id);
+
+  if (!saveGames()) {
+    games = previousGames;
+    return;
+  }
+
+  if (editingId === id) resetForm();
+
+  renderGames();
+}
+
+function renderGames() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  const filtered = games.filter(game =>
+    game.name.toLowerCase().includes(query)
+  );
+
+  gameList.replaceChildren();
+
+  if (filtered.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "لا توجد ألعاب مضافة هنا حتى الآن.";
+    gameList.appendChild(empty);
+    return;
+  }
+
+  filtered.forEach(game => {
+    const card = document.createElement("article");
+    card.className = "game-card";
+
+    const image = document.createElement("img");
+    image.src = game.image;
+    image.alt = game.name;
+    image.loading = "lazy";
+
+    const info = document.createElement("div");
+    info.className = "game-info";
+
+    const title = document.createElement("h3");
+    title.textContent = game.name;
+
+    const size = document.createElement("p");
+    size.textContent = "المساحة: " + game.size + " GB";
+
+    const players = document.createElement("p");
+    players.textContent = "اللاعبون: " + game.players;
+
+    const internet = document.createElement("p");
+    internet.textContent = "الإنترنت: " + {
+      offline: "أوفلاين",
+      online: "أونلاين",
+      both: "أوفلاين وأونلاين"
+    }[game.internet];
+
+    const description = document.createElement("p");
+    description.textContent = game.description || "لا يوجد وصف.";
+
+    const actions = document.createElement("div");
+    actions.className = "game-actions";
+
+    const editButton = document.createElement("button");
+    editButton.className = "secondary";
+    editButton.textContent = "✏️ تعديل";
+    editButton.addEventListener("click", () => editGame(game.id));
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "danger";
+    deleteButton.textContent = "🗑️ حذف";
+    deleteButton.addEventListener("click", () => deleteGame(game.id));
+
+    actions.append(editButton, deleteButton);
+    info.append(title, size, players, internet, description, actions);
+    card.append(image, info);
+    gameList.appendChild(card);
+  });
+}
+
+searchInput.addEventListener("input", renderGames);
+
+renderGames();
+</script>
+
+</body>
+</html>
