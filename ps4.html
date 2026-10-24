@@ -2,357 +2,493 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ألعاب PS4 - FANTASY STORE</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ألعاب PS4 | FANTASY STORE</title>
 <style>
-*{box-sizing:border-box}
-body{
-    margin:0;background:#fff;color:#292533;
-    font-family:Arial,Tahoma,sans-serif
+:root {
+  --bg:#08090f;
+  --panel:#121420;
+  --border:#272a3d;
+  --purple:#7546ff;
+  --text:#f5f5ff;
+  --muted:#a5a7bd;
 }
-header{text-align:center;padding:30px 15px;border-bottom:1px solid #eee}
-header h1{margin:0 0 10px;font-size:32px}
-header h1 span{color:#7138d7}
-header p{color:#777}
-.home{
-    display:inline-block;padding:10px 20px;border:1px solid #7138d7;
-    color:#7138d7;text-decoration:none;border-radius:8px
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Tahoma,sans-serif;
 }
-.container{width:94%;max-width:1250px;margin:auto;padding:25px 0}
-.search{
-    display:block;width:100%;max-width:600px;margin:0 auto 25px;
-    padding:14px;border:1px solid #ddd;border-radius:9px;font-size:16px
+header {
+  text-align:center;
+  padding:30px 16px 24px;
+  background:linear-gradient(135deg,#111027,#08090f 75%);
+  border-bottom:1px solid var(--border);
 }
-.categories{
-    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:12px;margin-bottom:30px
+.logo {
+  font-size:30px;
+  font-weight:900;
+  color:#a88aff;
+  letter-spacing:2px;
 }
-.category{
-    min-height:65px;background:#fff;border:1px solid #ddd;
-    border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer
+header h1 {margin:12px 0 7px;font-size:25px}
+header p {color:var(--muted);margin:0 0 20px}
+.home {
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  border:1px solid #51417d;
+  padding:10px 22px;
+  border-radius:9px;
 }
-.category:hover{border-color:#7138d7;color:#7138d7}
-.category.active{background:#7138d7;color:white;border-color:#7138d7}
-.count{color:#777;margin-bottom:15px}
-.games{
-    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px
+.container {max-width:1250px;margin:auto;padding:22px 16px}
+.search {
+  width:100%;
+  padding:15px;
+  background:var(--panel);
+  color:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  font-size:16px;
+  margin-bottom:18px;
 }
-.card{
-    overflow:hidden;border:1px solid #e5e0ed;border-radius:12px;
-    background:#fff;transition:.2s
+.categories {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
 }
-.card:hover{border-color:#7138d7;transform:translateY(-3px)}
-.cover{
-    width:100%;aspect-ratio:3/4;display:block;object-fit:cover;
-    background:#f1edf8
+.categories button {
+  flex:1 1 100px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  color:white;
+  padding:12px 9px;
+  border-radius:9px;
+  cursor:pointer;
 }
-.missing{
-    width:100%;aspect-ratio:3/4;background:#f1edf8;color:#7138d7;
-    display:flex;align-items:center;justify-content:center;
-    text-align:center;padding:15px;font-weight:bold;direction:ltr
+.categories button.active,
+.categories button:hover {
+  background:var(--purple);
+  border-color:var(--purple);
 }
-.info{padding:13px}
-.info h2{font-size:17px;line-height:1.5;margin:0 0 10px}
-.size{color:#7138d7;font-weight:bold;margin:8px 0}
-.description{font-size:13px;color:#666;line-height:1.8}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
-.tag{background:#f1ebfc;color:#6132b5;padding:5px 8px;border-radius:5px;font-size:11px}
-.details{
-    width:100%;padding:10px;border:1px solid #7138d7;
-    background:white;color:#7138d7;border-radius:7px;cursor:pointer
+.grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:17px;
 }
-.details:hover{background:#7138d7;color:white}
-.empty{text-align:center;padding:30px;color:#777}
-footer{text-align:center;padding:25px;color:#777;border-top:1px solid #eee}
-dialog{
-    width:min(500px,90%);border:1px solid #ddd;border-radius:14px;
-    padding:25px;max-height:85vh;overflow:auto
+.card {
+  min-width:0;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:13px;
+  overflow:hidden;
+  transition:transform .2s,border-color .2s;
 }
-dialog::backdrop{background:#0009}
-dialog h2{color:#7138d7}
-dialog p{line-height:1.9;color:#555}
-.close{
-    padding:9px 18px;background:#7138d7;color:white;
-    border:0;border-radius:7px;cursor:pointer
+.card:hover {transform:translateY(-4px);border-color:var(--purple)}
+.cover {
+  width:100%;
+  aspect-ratio:3/4;
+  display:block;
+  object-fit:cover;
+  background:#202235;
 }
-@media(max-width:850px){
-    .games{grid-template-columns:repeat(3,minmax(0,1fr))}
+.no-image {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:15px;
+  color:#b7a5ff;
+  font-size:20px;
+  font-weight:bold;
+  aspect-ratio:3/4;
+  background:linear-gradient(145deg,#22203b,#10121d);
 }
-@media(max-width:550px){
-    .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .categories{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .info{padding:9px}
-    .info h2{font-size:14px}
+.card-content {padding:13px}
+.card h3 {font-size:16px;margin:0 0 12px;line-height:1.6}
+.info {font-size:13px;color:var(--muted);line-height:1.9}
+.tag {
+  display:inline-block;
+  color:#c5b4ff;
+  background:#292044;
+  border-radius:6px;
+  padding:4px 7px;
+  margin-top:8px;
+  font-size:12px;
 }
-@media(max-width:350px){
-    .games{grid-template-columns:1fr}
+.details {
+  width:100%;
+  margin-top:12px;
+  background:var(--purple);
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:11px 8px;
+  font-size:14px;
+  cursor:pointer;
+}
+.empty {grid-column:1/-1;text-align:center;color:var(--muted);padding:35px}
+footer {
+  text-align:center;
+  padding:25px 10px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  margin-top:25px;
+}
+dialog {
+  background:#141522;
+  color:white;
+  border:1px solid #39334f;
+  border-radius:14px;
+  max-width:500px;
+  width:calc(100% - 28px);
+  padding:22px;
+}
+dialog::backdrop {background:#000c}
+dialog h2 {color:#b8a0ff}
+dialog p {line-height:1.9;color:#ddd}
+.close {
+  background:#39334f;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:10px 20px;
+  cursor:pointer;
+}
+@media(max-width:900px) {
+  .grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:600px) {
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card-content {padding:10px}
+  .card h3 {font-size:14px}
+  .logo {font-size:25px}
+  header h1 {font-size:22px}
+}
+@media(max-width:350px) {
+  .grid {grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>ألعاب <span>PS4</span></h1>
-    <p>اكتشف ألعابك المفضلة في FANTASY STORE</p>
-    <a class="home" href="index.html">الصفحة الرئيسية</a>
+  <div class="logo">FANTASY STORE</div>
+  <h1>ألعاب <span style="color:#a88aff">PS4</span></h1>
+  <p>اكتشف الألعاب والمغامرات المفضلة عندك</p>
+  <a class="home" href="index.html">الصفحة الرئيسية</a>
 </header>
 
 <main class="container">
+  <input id="search" class="search" type="search"
+    placeholder="ابحث عن اسم اللعبة..." aria-label="ابحث عن لعبة">
 
-    <input class="search" id="search" type="search"
-           placeholder="ابحث عن اسم اللعبة...">
+  <nav class="categories" id="categories">
+    <button class="active" data-cat="all">كل الألعاب</button>
+    <button data-cat="action">أكشن</button>
+    <button data-cat="adventure">مغامرات</button>
+    <button data-cat="horror">رعب</button>
+    <button data-cat="sports">رياضة</button>
+    <button data-cat="fighting">قتال</button>
+    <button data-cat="family">أطفال وعائلة</button>
+  </nav>
 
-    <div class="categories">
-        <button class="category active" data-cat="all">كل الألعاب</button>
-        <button class="category" data-cat="adventure">مغامرات</button>
-        <button class="category" data-cat="horror">رعب</button>
-        <button class="category" data-cat="action">أكشن</button>
-        <button class="category" data-cat="story">قصص</button>
-        <button class="category" data-cat="local">لعب محلي</button>
-        <button class="category" data-cat="racing">سباقات</button>
-        <button class="category" data-cat="sports">رياضة</button>
-        <button class="category" data-cat="kids">أطفال</button>
-    </div>
-
-    <p class="count" id="count"></p>
-    <section class="games" id="games"></section>
-    <p class="empty" id="empty" hidden>لا توجد ألعاب مطابقة للبحث.</p>
-
+  <section class="grid" id="gamesList"></section>
 </main>
 
-<dialog id="detailsDialog">
-    <h2 id="detailName"></h2>
-    <p id="detailDescription"></p>
-    <p id="detailSize"></p>
-    <p id="detailPlayers"></p>
-    <p id="detailInternet"></p>
-    <button class="close" id="closeDialog">إغلاق</button>
+<dialog id="gameDialog">
+  <h2 id="dialogTitle"></h2>
+  <div id="dialogInfo"></div>
+  <p id="dialogDesc"></p>
+  <button class="close" id="closeDialog">إغلاق</button>
 </dialog>
 
 <footer>FANTASY STORE © 2026</footer>
 
 <script>
-const gamesList = [
-{
- name:"God of War Ragnarök",
-image:"god-of-war-ragnarok.jpg",
- size:"حوالي 90 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد",
- internet:"القصة يمكن لعبها دون إنترنت بعد التثبيت والتحديثات المطلوبة",
- desc:"رحلة كريتوس وأتريوس في العوالم الإسكندنافية، مع قتال واستكشاف وقصة قوية."
-},
-{
- name:"Uncharted 4: A Thief's End",
-image:"uncharted-4.jpg",
- size:"حوالي 60 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد في القصة",
- internet:"القصة تعمل دون إنترنت",
- desc:"مغامرة ناثان دريك للبحث عن كنز مفقود، مليئة بالألغاز والمطاردات."
-},
-{
- name:"The Last of Us Remastered",
- image:"the-last-of-us-remastered.jpg",
- size:"حوالي 50 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد في القصة",
- internet:"القصة تعمل دون إنترنت",
- desc:"رحلة بقاء مؤثرة تجمع بين الاستكشاف والتخفي والقتال."
-},
-{
- name:"Grand Theft Auto V",
-image:"gta-v.jpg",
- size:"حوالي 90 جيجابايت",
- cat:["action","adventure"],
- players:"لاعب واحد في طور القصة",
- internet:"طور القصة يعمل دون إنترنت",
- desc:"عالم مفتوح واسع، ومهام متنوعة وقيادة واستكشاف مدينة لوس سانتوس."
-},
-{
- name:"Resident Evil 4",
-image:"resident-evil-4.jpg",
- size:"حوالي 60 جيجابايت",
- cat:["horror","action","adventure"],
- players:"لاعب واحد",
- internet:"القصة تعمل دون إنترنت",
- desc:"رعب وبقاء، يستكشف فيه ليون قرية غامضة لإنقاذ ابنة الرئيس."
-},
-{
- name:"Gran Turismo 7",
- image:"images/gran-turismo-7.jpg",
- size:"حوالي 110 جيجابايت",
- cat:["racing"],
- players:"أطوار فردية وجماعية حسب الوضع",
- internet:"تتطلب معظم أنماط اللعب اتصالًا بالإنترنت",
- desc:"سباقات سيارات واقعية مع مجموعة كبيرة من السيارات والحلبات."
-},
-{
- name:"EA SPORTS FC 24",
- image:"images/ea-sports-fc-24.jpg",
- size:"حوالي 45 جيجابايت",
- cat:["sports","local"],
- players:"اللعب المحلي متاح في أطوار مناسبة",
- internet:"بعض الأطوار تعمل دون إنترنت",
- desc:"كرة قدم وأندية وبطولات، مع إمكانية اللعب مع شخص آخر في الأطوار المدعومة."
-},
-{
- name:"Minecraft",
-image:"minecraft.jpg",
- size:"حوالي 2 جيجابايت",
- cat:["adventure","kids","local"],
- players:"اللعب المحلي متاح في أوضاع مدعومة",
- internet:"تتوفر ميزات دون إنترنت",
- desc:"بناء واستكشاف وصناعة عوالم خاصة بك، مع حرية كبيرة في اللعب."
-},
-{
- name:"Horizon Zero Dawn",
- image:"images/horizon-zero-dawn.jpg",
- size:"حوالي 50 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد",
- internet:"تعمل القصة دون إنترنت",
- desc:"مغامرة في عالم تحكمه آلات غريبة، مع استكشاف وأسرار وقتال."
-},
-{
- name:"Ghost of Tsushima",
-image:"ghost-of-tsushima.jpg",
- size:"حوالي 50 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد في القصة",
- internet:"القصة تعمل دون إنترنت",
- desc:"مغامرة ساموراي في جزيرة تسوشيما، تجمع بين القتال والاستكشاف."
-},
-{
- name:"Red Dead Redemption 2",
- image:"images/red-dead-redemption-2.jpg",
- size:"حوالي 100 جيجابايت",
- cat:["adventure","action","story"],
- players:"لاعب واحد في القصة",
- internet:"طور القصة يعمل دون إنترنت",
- desc:"قصة عالم مفتوح في الغرب الأمريكي، مع مهام وشخصيات وتفاصيل كثيرة."
-},
-{
- name:"Resident Evil 2",
- image:"images/resident-evil-2.jpg",
- size:"حوالي 30 جيجابايت",
- cat:["horror","action","story"],
- players:"لاعب واحد",
- internet:"القصة تعمل دون إنترنت",
- desc:"رعب وبقاء داخل مدينة موبوءة، مع ألغاز وموارد محدودة."
-}
-];},
-const labels = {
- adventure:"مغامرات",
- horror:"رعب",
- action:"أكشن",
- story:"قصص",
- local:"لعب محلي",
- racing:"سباقات",
- sports:"رياضة",
- kids:"أطفال"
+const games = [
+  {
+    name:"God of War Ragnarök",
+    image:"god-of-war-ragnarok.jpg",
+    size:"حوالي 90 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"مغامرة أكشن ملحمية مع كريتوس وأتريوس في عالم الأساطير الإسكندنافية."
+  },
+  {
+    name:"God of War",
+    image:"god-of-war.jpg",
+    size:"حوالي 45 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"رحلة كريتوس وابنه أتريوس في عالم الأساطير، مع قتال واستكشاف وقصة قوية."
+  },
+  {
+    name:"Ghost of Tsushima",
+    image:"ghost-of-tsushima.jpg",
+    size:"حوالي 50 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد للقصة",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"مغامرة في اليابان القديمة، تلعب فيها دور محارب ساموراي يدافع عن جزيرته."
+  },
+  {
+    name:"The Last of Us Remastered",
+    image:"the-last-of-us-remastered.jpg",
+    size:"حوالي 50 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد للقصة",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"قصة بقاء ومغامرة يتعاون فيها جويل وإيلي خلال رحلة خطيرة."
+  },
+  {
+    name:"Uncharted 4",
+    image:"uncharted-4.jpg",
+    size:"حوالي 50 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد للقصة",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"مغامرة ناثان دريك للبحث عن كنز أسطوري وسط الألغاز والمطاردات."
+  },
+  {
+    name:"Red Dead Redemption 2",
+    image:"red-dead-redemption-2.jpg",
+    size:"حوالي 100 إلى 120 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد للقصة",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"عالم مفتوح في الغرب الأمريكي، بقصة طويلة وشخصيات ومهام متنوعة."
+  },
+  {
+    name:"Horizon Zero Dawn",
+    image:"horizon-zero-dawn.jpg",
+    size:"حوالي 50 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"تستكشف ألوي عالمًا مليئًا بآلات تشبه الحيوانات وتكشف أسرار الماضي."
+  },
+  {
+    name:"Minecraft",
+    image:"minecraft.jpg",
+    size:"تختلف حسب الإصدار والتحديث",
+    cat:["adventure","family"],
+    players:"فردي أو جماعي حسب الإعدادات",
+    internet:"يمكن اللعب الفردي دون إنترنت",
+    desc:"ابنِ عوالمك واجمع الموارد واستكشف الكهوف وصمّم ما تتخيله."
+  },
+  {
+    name:"Resident Evil 4",
+    image:"resident-evil-4.jpg",
+    size:"حوالي 60 جيجابايت",
+    cat:["horror","action","adventure"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"رعب وبقاء، يستكشف فيه ليون قرية غامضة لإنقاذ ابنة الرئيس."
+  },
+  {
+    name:"Resident Evil 2",
+    image:"resident-evil-2.jpg",
+    size:"حوالي 25 جيجابايت",
+    cat:["horror","action"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"رعب وبقاء في مدينة تنتشر فيها كائنات خطيرة، مع ألغاز واستكشاف."
+  },
+  {
+    name:"Resident Evil Village",
+    image:"resident-evil-village.jpg",
+    size:"حوالي 30 جيجابايت",
+    cat:["horror","action"],
+    players:"لاعب واحد",
+    internet:"القصة تعمل دون إنترنت",
+    desc:"لعبة رعب وبقاء يبحث فيها إيثان عن ابنته في قرية غامضة."
+  },
+  {
+    name:"GTA V",
+    image:"gta-v.jpg",
+    size:"حوالي 90 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعب واحد للقصة",
+    internet:"طور القصة يعمل دون إنترنت",
+    desc:"عالم مفتوح ومهام ومطاردات في مدينة لوس سانتوس."
+  },
+  {
+    name:"It Takes Two",
+    image:"it-takes-two.jpg",
+    size:"حوالي 40 جيجابايت",
+    cat:["adventure","family"],
+    players:"لاعبان تعاونيان",
+    internet:"محلي أو عبر الإنترنت",
+    desc:"مغامرة تعاونية مصممة للاعبين، مليئة بالتحديات والأفكار المتنوعة."
+  },
+  {
+    name:"A Way Out",
+    image:"a-way-out.jpg",
+    size:"حوالي 20 جيجابايت",
+    cat:["action","adventure"],
+    players:"لاعبان تعاونيان",
+    internet:"محلي أو عبر الإنترنت",
+    desc:"مغامرة قصصية تعاونية عن شخصين يحاولان الهروب ومواجهة تحديات معًا."
+  },
+  {
+    name:"EA SPORTS FC 27",
+    image:"fc-27.jpg",
+    size:"يُحدد حسب الإصدار",
+    cat:["sports"],
+    players:"حسب الأطوار",
+    internet:"بعض الخصائص تحتاج إلى الإنترنت",
+    desc:"ملاحظة: تأكد من توافر إصدار PS4 رسميًا قبل إدراج اللعبة بهذا الاسم."
+  },
+  {
+    name:"Mortal Kombat 11",
+    image:"mortal-kombat-11.jpg",
+    size:"حوالي 50 جيجابايت",
+    cat:["fighting"],
+    players:"لاعبان محليًا",
+    internet:"بعض الأطوار تحتاج إلى الإنترنت",
+    desc:"لعبة قتال تضم شخصيات متنوعة وأطوارًا فردية ومحلية."
+  },
+  {
+    name:"Tekken 7",
+    image:"tekken-7.jpg",
+    size:"حوالي 45 جيجابايت",
+    cat:["fighting"],
+    players:"لاعبان محليًا",
+    internet:"توجد أطوار محلية وأخرى عبر الإنترنت",
+    desc:"لعبة قتال ثلاثية الأبعاد بشخصيات وأساليب قتال متعددة."
+  },
+  {
+    name:"Gran Turismo 7",
+    image:"gran-turismo-7.jpg",
+    size:"تختلف حسب التحديثات",
+    cat:["sports"],
+    players:"حسب الطور",
+    internet:"تحتاج أطوار كثيرة إلى الإنترنت",
+    desc:"محاكاة سباقات سيارات مع مجموعة واسعة من المركبات والحلبات."
+  },
+  {
+    name:"EA SPORTS FC 24",
+    image:"ea-sports-fc-24.jpg",
+    size:"حوالي 45 جيجابايت",
+    cat:["sports"],
+    players:"حسب الطور",
+    internet:"بعض الأطوار تحتاج إلى الإنترنت",
+    desc:"كرة قدم تضم فرقًا ولاعبين وأطوارًا متعددة."
+  }
+];
+
+const list = document.getElementById("gamesList");
+const search = document.getElementById("search");
+let activeCat = "all";
+
+const categoryNames = {
+  action:"أكشن",
+  adventure:"مغامرات",
+  horror:"رعب",
+  sports:"رياضة",
+  fighting:"قتال",
+  family:"أطفال وعائلة"
 };
 
-const container = document.getElementById("games");
-const search = document.getElementById("search");
-const count = document.getElementById("count");
-const empty = document.getElementById("empty");
-let activeCategory = "all";
+function renderGames() {
+  const term = search.value.trim().toLowerCase();
+  const filtered = games.filter(game => {
+    const matchesText = game.name.toLowerCase().includes(term);
+    const matchesCat = activeCat === "all" || game.cat.includes(activeCat);
+    return matchesText && matchesCat;
+  });
 
-function renderGames(){
- const query = search.value.trim().toLowerCase();
+  list.innerHTML = "";
 
- const filtered = gamesList.filter(game =>
-   (activeCategory === "all" || game.cat.includes(activeCategory)) &&
-   game.name.toLowerCase().includes(query)
- );
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">مفيش ألعاب مطابقة للبحث.</div>';
+    return;
+  }
 
- container.innerHTML = "";
+  filtered.forEach(game => {
+    const card = document.createElement("article");
+    card.className = "card";
 
- filtered.forEach(game => {
-   const card = document.createElement("article");
-   card.className = "card";
+    const img = document.createElement("img");
+    img.className = "cover";
+    img.src = game.image;
+    img.alt = game.name;
+    img.loading = "lazy";
+    img.onerror = () => {
+      const fallback = document.createElement("div");
+      fallback.className = "no-image";
+      fallback.textContent = game.name;
+      img.replaceWith(fallback);
+    };
 
-   const img = document.createElement("img");
-   img.className = "cover";
-   img.src = game.image;
-   img.alt = game.name;
-   img.loading = "lazy";
+    const content = document.createElement("div");
+    content.className = "card-content";
 
-   img.onerror = () => {
-     const placeholder = document.createElement("div");
-     placeholder.className = "missing";
-     placeholder.textContent = game.name;
-     placeholder.setAttribute("role","img");
-     placeholder.setAttribute("aria-label",game.name);
-     img.replaceWith(placeholder);
-   };
+    const title = document.createElement("h3");
+    title.textContent = game.name;
 
-   const info = document.createElement("div");
-   info.className = "info";
+    const info = document.createElement("div");
+    info.className = "info";
+    info.textContent = "المساحة: " + game.size;
 
-   const title = document.createElement("h2");
-   title.textContent = game.name;
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = categoryNames[game.cat[0]] || "ألعاب PS4";
 
-   const size = document.createElement("p");
-   size.className = "size";
-   size.textContent = "المساحة: " + game.size;
+    const btn = document.createElement("button");
+    btn.className = "details";
+    btn.textContent = "عرض التفاصيل";
+    btn.addEventListener("click", () => showDetails(game));
 
-   const desc = document.createElement("p");
-   desc.className = "description";
-   desc.textContent = game.desc;
-
-   const tags = document.createElement("div");
-   tags.className = "tags";
-
-   game.cat.forEach(cat => {
-     const tag = document.createElement("span");
-     tag.className = "tag";
-     tag.textContent = labels[cat];
-     tags.appendChild(tag);
-   });
-
-   const button = document.createElement("button");
-   button.className = "details";
-   button.textContent = "عرض التفاصيل";
-
-   button.onclick = () => {
-     document.getElementById("detailName").textContent = game.name;
-     document.getElementById("detailDescription").textContent = game.desc;
-     document.getElementById("detailSize").textContent = "المساحة: " + game.size;
-     document.getElementById("detailPlayers").textContent = "اللاعبون: " + game.players;
-     document.getElementById("detailInternet").textContent = "الإنترنت: " + game.internet;
-     document.getElementById("detailsDialog").showModal();
-   };
-
-   info.append(title,size,desc,tags,button);
-   card.append(img,info);
-   container.appendChild(card);
- });
-
- count.textContent = "عدد الألعاب: " + filtered.length;
- empty.hidden = filtered.length !== 0;
+    content.append(title, info, tag, btn);
+    card.append(img, content);
+    list.append(card);
+  });
 }
 
-document.querySelectorAll(".category").forEach(button => {
- button.onclick = () => {
-   activeCategory = button.dataset.cat;
-   document.querySelectorAll(".category").forEach(b =>
-     b.classList.toggle("active", b === button)
-   );
-   renderGames();
- };
+function showDetails(game) {
+  document.getElementById("dialogTitle").textContent = game.name;
+  const info = document.getElementById("dialogInfo");
+  info.replaceChildren();
+
+  [
+    "المساحة: " + game.size,
+    "عدد اللاعبين: " + game.players,
+    "الإنترنت: " + game.internet,
+    "التصنيف: " + game.cat.map(c => categoryNames[c] || c).join("، ")
+  ].forEach(line => {
+    const p = document.createElement("p");
+    p.textContent = line;
+    info.append(p);
+  });
+
+  document.getElementById("dialogDesc").textContent = game.desc;
+  document.getElementById("gameDialog").showModal();
+}
+
+document.getElementById("closeDialog").addEventListener("click", () => {
+  document.getElementById("gameDialog").close();
 });
 
-search.addEventListener("input",renderGames);
+search.addEventListener("input", renderGames);
 
-document.getElementById("closeDialog").onclick = () =>
- document.getElementById("detailsDialog").close();
+document.getElementById("categories").addEventListener("click", event => {
+  const button = event.target.closest("button[data-cat]");
+  if (!button) return;
+  activeCat = button.dataset.cat;
+  document.querySelectorAll(".categories button").forEach(b => {
+    b.classList.toggle("active", b === button);
+  });
+  renderGames();
+});
 
 renderGames();
 </script>
-
 </body>
 </html>
