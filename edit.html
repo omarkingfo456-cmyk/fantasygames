@@ -1,209 +1,72 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>إدارة الألعاب - FANTASY STORE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إدارة الألعاب - FANTASY STORE</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Tahoma, sans-serif;
-      background: #080812;
-      color: #fff;
-      min-height: 100vh;
-    }
-
-    header {
-      background: #111120;
-      border-bottom: 1px solid #34304d;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      color: #c7a5ff;
-      font-size: 27px;
-    }
-
-    header p {
-      color: #aaa4bf;
-      margin-bottom: 0;
-    }
-
-    .container {
-      width: min(950px, 94%);
-      margin: 25px auto;
-    }
-
-    .card {
-      background: #121222;
-      border: 1px solid #30294b;
-      border-radius: 15px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 25px #0005;
-    }
-
-    h2 {
-      color: #c7a5ff;
-      margin-top: 0;
-    }
-
-    label {
-      display: block;
-      margin: 13px 0 7px;
-      color: #ddd6ef;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 9px;
-      border: 1px solid #40365e;
-      background: #090914;
-      color: white;
-      font-size: 15px;
-      outline: none;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: #a879ff;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    button, .link-button {
-      border: 0;
-      border-radius: 9px;
-      padding: 12px 18px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .primary {
-      background: #a879ff;
-      color: #10091d;
-    }
-
-    .secondary {
-      background: #28243c;
-      color: white;
-      border: 1px solid #51436f;
-    }
-
-    .danger {
-      background: #8c263d;
-      color: white;
-    }
-
-    button:hover, .link-button:hover {
-      filter: brightness(1.12);
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .message {
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 12px;
-      background: #22213a;
-      color: #ddd;
-      overflow-wrap: anywhere;
-    }
-
-    .game {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      border: 1px solid #342d4d;
-      background: #0b0b17;
-      border-radius: 12px;
-      padding: 13px;
-      margin-top: 12px;
-    }
-
-    .game img {
-      width: 85px;
-      height: 105px;
-      object-fit: cover;
-      border-radius: 7px;
-      background: #222;
-    }
-
-    .game-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .game-info h3 {
-      margin: 0 0 7px;
-      overflow-wrap: anywhere;
-    }
-
-    .game-info p {
-      color: #bcb5d0;
-      margin: 5px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .game-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 10px;
-    }
-
-    .game-actions button {
-      padding: 9px 12px;
-    }
-
-    .notice {
-      line-height: 1.8;
-      color: #c5bfd7;
-      font-size: 14px;
-    }
-
-    @media (max-width: 520px) {
-      .card {
-        padding: 15px;
-      }
-
-      .game {
-        align-items: flex-start;
-      }
-
-      .game img {
-        width: 70px;
-        height: 90px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;background:#080812;color:#fff;
+  font-family:Arial,Tahoma,sans-serif
+}
+header{
+  padding:24px 15px;text-align:center;
+  background:#111120;border-bottom:1px solid #39304f
+}
+header h1{margin:0;color:#c59aff;font-size:28px}
+header p{color:#bbb;margin-bottom:0}
+.container{width:min(900px,94%);margin:25px auto}
+.card{
+  background:#131323;border:1px solid #342d4b;
+  border-radius:15px;padding:20px;margin-bottom:20px
+}
+h2{color:#c59aff;margin-top:0}
+label{display:block;margin:15px 0 7px}
+input,select,textarea{
+  width:100%;padding:12px;border-radius:9px;
+  border:1px solid #403754;background:#090914;
+  color:white;font-size:15px
+}
+textarea{min-height:90px;resize:vertical}
+button,.link{
+  padding:12px 17px;border:0;border-radius:9px;
+  cursor:pointer;font-weight:bold;font-size:14px;
+  text-decoration:none;display:inline-block;text-align:center
+}
+.primary{background:#b486ff;color:#160c27}
+.secondary{background:#29243c;color:white}
+.danger{background:#8d2940;color:white}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
+.hidden{display:none!important}
+#preview{
+  display:none;width:140px;height:180px;object-fit:cover;
+  margin-top:12px;border-radius:10px;border:1px solid #54456f
+}
+.note{color:#c6bfd7;font-size:13px;line-height:1.9}
+#message{margin-top:12px;line-height:1.8}
+.game{
+  display:flex;gap:13px;padding:12px;margin-top:12px;
+  background:#0b0b17;border:1px solid #342d4b;border-radius:10px
+}
+.game img{
+  width:80px;height:105px;object-fit:cover;
+  border-radius:7px;background:#222
+}
+.gameInfo{flex:1;min-width:0}
+.gameInfo h3{margin:0 0 8px;overflow-wrap:anywhere}
+.gameInfo p{color:#c6bfd7;overflow-wrap:anywhere}
+.gameActions{display:flex;gap:7px;flex-wrap:wrap}
+.gameActions button{padding:9px 12px}
+@media(max-width:480px){
+  .card{padding:14px}
+  .game img{width:65px;height:90px}
+}
+</style>
 </head>
 
 <body>
-
 <header>
   <h1>FANTASY STORE</h1>
   <p>لوحة إدارة ألعاب PS4</p>
@@ -211,397 +74,355 @@
 
 <main class="container">
 
-  <section class="card" id="loginCard">
-    <h2>🔐 تسجيل دخول المالك</h2>
+<section class="card" id="login">
+  <h2>🔐 دخول المالك</h2>
+  <label for="password">كلمة المرور</label>
+  <input id="password" type="password" placeholder="اكتب كلمة المرور">
+  <div class="buttons">
+    <button class="primary" id="loginBtn">دخول</button>
+    <a class="link secondary" href="ps4.html">العودة للألعاب</a>
+  </div>
+  <p id="loginMessage"></p>
+</section>
 
-    <label for="password">كلمة المرور</label>
-    <input
-      type="password"
-      id="password"
-      placeholder="اكتب كلمة المرور"
-      autocomplete="current-password"
-    >
+<section id="panel" class="hidden">
 
-    <div class="actions">
-      <button class="primary" id="loginButton">دخول</button>
-      <a class="link-button secondary" href="ps4.html">العودة للألعاب</a>
+<div class="card">
+  <h2 id="formTitle">➕ إضافة لعبة جديدة</h2>
+
+  <form id="gameForm">
+    <input type="hidden" id="gameId">
+
+    <label for="name">اسم اللعبة *</label>
+    <input id="name" required maxlength="100"
+           placeholder="مثال: God of War">
+
+    <label for="size">حجم اللعبة</label>
+    <input id="size" placeholder="مثال: 45 GB" maxlength="30">
+
+    <label for="category">التصنيف</label>
+    <select id="category">
+      <option>أكشن</option>
+      <option>مغامرات</option>
+      <option>رعب</option>
+      <option>أطفال</option>
+      <option>رياضة</option>
+      <option>سباقات</option>
+      <option>أخرى</option>
+    </select>
+
+    <label for="description">وصف اللعبة</label>
+    <textarea id="description" maxlength="1000"
+              placeholder="اكتب وصف اللعبة هنا"></textarea>
+
+    <label for="imageFile">صورة غلاف اللعبة</label>
+    <input id="imageFile" type="file" accept="image/*">
+
+    <img id="preview" alt="معاينة صورة اللعبة">
+
+    <p class="note">
+      اختار صورة من ملفات الجهاز. الصورة ستُحفظ محليًا في هذا المتصفح،
+      وليست مرفوعة إلى الإنترنت.
+    </p>
+
+    <div class="buttons">
+      <button class="primary" type="submit" id="saveBtn">حفظ اللعبة</button>
+      <button class="secondary hidden" type="button" id="cancelBtn">إلغاء التعديل</button>
+      <button class="secondary" type="reset">تفريغ الحقول</button>
     </div>
 
-    <div id="loginMessage" class="message hidden"></div>
-  </section>
+    <p id="message"></p>
+  </form>
+</div>
 
-  <section id="adminPanel" class="hidden">
+<div class="card">
+  <h2>🎮 الألعاب المسجلة</h2>
+  <div id="gamesList"></div>
 
-    <div class="card">
-      <h2 id="formTitle">➕ إضافة لعبة جديدة</h2>
+  <div class="buttons">
+    <button class="danger" id="deleteAllBtn">حذف كل الألعاب</button>
+    <button class="secondary" id="logoutBtn">تسجيل الخروج</button>
+    <a class="link secondary" href="ps4.html">عرض صفحة الألعاب</a>
+  </div>
+</div>
 
-      <form id="gameForm">
-        <input type="hidden" id="gameId">
+<div class="card">
+  <p class="note">
+    تنبيه: هذه النسخة تحفظ الألعاب والصور داخل المتصفح الحالي.
+    لن تظهر تلقائيًا على أجهزة الزبائن الأخرى. ظهورها عند الجميع
+    يحتاج تخزينًا مشتركًا على الإنترنت. وكلمة المرور داخل كود الصفحة
+    ليست حماية حقيقية.
+  </p>
+</div>
 
-        <label for="gameName">اسم اللعبة *</label>
-        <input id="gameName" required maxlength="100"
-               placeholder="مثال: God of War">
-
-        <label for="gameSize">حجم اللعبة</label>
-        <input id="gameSize" maxlength="30"
-               placeholder="مثال: 45 GB">
-
-        <label for="gameCategory">التصنيف</label>
-        <select id="gameCategory">
-          <option value="أكشن">أكشن</option>
-          <option value="مغامرات">مغامرات</option>
-          <option value="رعب">رعب</option>
-          <option value="أطفال">أطفال</option>
-          <option value="رياضة">رياضة</option>
-          <option value="سباقات">سباقات</option>
-          <option value="أخرى">أخرى</option>
-        </select>
-
-        <label for="gameDescription">وصف اللعبة</label>
-        <textarea id="gameDescription"
-                  maxlength="1000"
-                  placeholder="اكتب وصفًا مختصرًا للعبة"></textarea>
-
-        <label for="gameImage">رابط صورة الغلاف</label>
-        <input id="gameImage" type="url"
-               placeholder="https://example.com/game.jpg">
-
-        <div class="actions">
-          <button type="submit" class="primary" id="saveButton">
-            حفظ اللعبة
-          </button>
-
-          <button type="button" class="secondary hidden" id="cancelEdit">
-            إلغاء التعديل
-          </button>
-
-          <button type="reset" class="secondary" id="clearForm">
-            تفريغ الحقول
-          </button>
-        </div>
-      </form>
-
-      <div id="formMessage" class="message hidden"></div>
-    </div>
-
-    <div class="card">
-      <h2>🎮 الألعاب الموجودة</h2>
-      <p class="notice">
-        تقدر تعدّل بيانات اللعبة أو تحذفها من هنا.
-      </p>
-
-      <div id="gamesList"></div>
-
-      <div class="actions">
-        <button class="danger" id="deleteAllButton">
-          حذف كل الألعاب
-        </button>
-        <button class="secondary" id="logoutButton">
-          تسجيل الخروج
-        </button>
-        <a href="ps4.html" class="link-button secondary">
-          عرض صفحة الألعاب
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>مهم بخصوص حفظ الألعاب</h2>
-      <p class="notice">
-        النسخة دي بتحفظ الألعاب في المتصفح الحالي فقط.
-        لن تظهر الإضافات تلقائيًا عند الزبائن على أجهزتهم المختلفة.
-        كمان كلمة المرور الموجودة داخل الكود ليست وسيلة حماية حقيقية
-        لأن الزائر يستطيع فحص كود JavaScript.
-        المشاركة بين كل الأجهزة مع حماية حساب المالك تحتاج قاعدة بيانات
-        وتسجيل دخول بصلاحيات.
-      </p>
-    </div>
-
-  </section>
+</section>
 </main>
 
 <script>
-  // كلمة مرور صفحة الإدارة
-  const OWNER_PASSWORD = "omar88@gamer";
+const OWNER_PASSWORD = "omar88@gamer";
+const STORAGE_KEY = "fantasyStoreManagedGamesV1";
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 
-  // مفتاح تخزين الألعاب
-  const STORAGE_KEY = "fantasyStoreManagedGamesV1";
+const $ = id => document.getElementById(id);
 
-  const loginCard = document.getElementById("loginCard");
-  const adminPanel = document.getElementById("adminPanel");
-  const passwordInput = document.getElementById("password");
-  const loginMessage = document.getElementById("loginMessage");
-  const formMessage = document.getElementById("formMessage");
-  const gameForm = document.getElementById("gameForm");
-  const gamesList = document.getElementById("gamesList");
+let games = readGames();
+let selectedImage = "";
+let previewUrl = "";
 
-  let games = loadGames();
+function readGames(){
+  try{
+    const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(value) ? value : [];
+  }catch{
+    return [];
+  }
+}
 
-  function loadGames() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      const parsed = saved ? JSON.parse(saved) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (error) {
-      return [];
-    }
+function saveGames(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+    return true;
+  }catch{
+    $("message").textContent =
+      "مساحة التخزين غير كافية. جرّب صورة أصغر.";
+    return false;
+  }
+}
+
+function login(){
+  if($("password").value !== OWNER_PASSWORD){
+    $("loginMessage").textContent = "كلمة المرور غير صحيحة.";
+    return;
+  }
+  $("login").classList.add("hidden");
+  $("panel").classList.remove("hidden");
+  renderGames();
+}
+
+$("loginBtn").addEventListener("click", login);
+$("password").addEventListener("keydown", e => {
+  if(e.key === "Enter") login();
+});
+
+function showPreview(src){
+  if(previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = "";
+
+  if(!src){
+    $("preview").style.display = "none";
+    $("preview").removeAttribute("src");
+    return;
   }
 
-  function saveGames() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
-      return true;
-    } catch (error) {
-      showMessage(
-        formMessage,
-        "تعذر حفظ البيانات. تأكد من مساحة التخزين في المتصفح.",
-        true
-      );
-      return false;
-    }
+  $("preview").src = src;
+  $("preview").style.display = "block";
+}
+
+$("imageFile").addEventListener("change", function(){
+  const file = this.files[0];
+  if(!file) return;
+
+  if(!file.type.startsWith("image/")){
+    $("message").textContent = "اختار ملف صورة صالح.";
+    this.value = "";
+    return;
   }
 
-  function showMessage(element, message, isError = false) {
-    element.textContent = message;
-    element.classList.remove("hidden");
-    element.style.color = isError ? "#ff9aab" : "#b8ffd0";
+  if(file.size > MAX_IMAGE_SIZE){
+    $("message").textContent =
+      "الصورة أكبر من 2 ميجابايت. اختار صورة أصغر.";
+    this.value = "";
+    return;
   }
 
-  function hideMessage(element) {
-    element.classList.add("hidden");
-    element.textContent = "";
+  const reader = new FileReader();
+
+  reader.onload = function(){
+    selectedImage = reader.result;
+    showPreview(selectedImage);
+    $("message").textContent = "تم اختيار الصورة. احفظ اللعبة.";
+  };
+
+  reader.onerror = function(){
+    $("message").textContent = "تعذرت قراءة الصورة.";
+  };
+
+  reader.readAsDataURL(file);
+});
+
+$("gameForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const id = $("gameId").value;
+  const oldGame = games.find(g => String(g.id) === id);
+  const name = $("name").value.trim();
+
+  if(!name){
+    $("message").textContent = "اكتب اسم اللعبة.";
+    return;
   }
 
-  function login() {
-    if (passwordInput.value === OWNER_PASSWORD) {
-      loginCard.classList.add("hidden");
-      adminPanel.classList.remove("hidden");
-      hideMessage(loginMessage);
-      renderGames();
-    } else {
-      showMessage(loginMessage, "كلمة المرور غير صحيحة.", true);
-    }
+  const game = {
+    id: id || (Date.now().toString() + Math.random().toString(16).slice(2)),
+    name,
+    size: $("size").value.trim(),
+    category: $("category").value,
+    description: $("description").value.trim(),
+    image: selectedImage || (oldGame ? oldGame.image : "")
+  };
+
+  const previous = games.slice();
+
+  if(id){
+    games = games.map(g => String(g.id) === id ? game : g);
+  }else{
+    games.unshift(game);
   }
 
-  document.getElementById("loginButton").addEventListener("click", login);
-
-  passwordInput.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") login();
-  });
-
-  function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, function (char) {
-      const entities = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      };
-      return entities[char];
-    });
+  if(!saveGames()){
+    games = previous;
+    return;
   }
 
-  function renderGames() {
-    gamesList.replaceChildren();
+  resetForm();
+  renderGames();
+  $("message").textContent = id ? "تم تعديل اللعبة." : "تم حفظ اللعبة.";
+});
 
-    if (games.length === 0) {
-      const empty = document.createElement("p");
-      empty.className = "notice";
-      empty.textContent = "مفيش ألعاب لسه. استخدم النموذج لإضافة أول لعبة.";
-      gamesList.appendChild(empty);
-      return;
-    }
+function renderGames(){
+  $("gamesList").replaceChildren();
 
-    games.forEach(function (game) {
-      const item = document.createElement("article");
-      item.className = "game";
+  if(games.length === 0){
+    const p = document.createElement("p");
+    p.className = "note";
+    p.textContent = "لم تتم إضافة ألعاب بعد.";
+    $("gamesList").appendChild(p);
+    return;
+  }
 
+  games.forEach(game => {
+    const item = document.createElement("article");
+    item.className = "game";
+
+    if(game.image){
       const img = document.createElement("img");
-      img.alt = "غلاف " + game.name;
-      img.src = game.image || "";
-      img.onerror = function () {
-        img.style.visibility = "hidden";
-      };
+      img.src = game.image;
+      img.alt = game.name;
+      item.appendChild(img);
+    }
 
-      const info = document.createElement("div");
-      info.className = "game-info";
+    const info = document.createElement("div");
+    info.className = "gameInfo";
 
-      const title = document.createElement("h3");
-      title.textContent = game.name;
+    const title = document.createElement("h3");
+    title.textContent = game.name;
 
-      const details = document.createElement("p");
-      details.textContent =
-        "التصنيف: " + (game.category || "أخرى") +
-        " | الحجم: " + (game.size || "غير محدد");
+    const details = document.createElement("p");
+    details.textContent =
+      "الحجم: " + (game.size || "غير محدد") +
+      " | التصنيف: " + (game.category || "أخرى");
 
-      const description = document.createElement("p");
-      description.textContent = game.description || "";
+    const description = document.createElement("p");
+    description.textContent = game.description || "";
 
-      const actions = document.createElement("div");
-      actions.className = "game-actions";
+    const actions = document.createElement("div");
+    actions.className = "gameActions";
 
-      const editButton = document.createElement("button");
-      editButton.className = "secondary";
-      editButton.textContent = "تعديل";
-      editButton.addEventListener("click", function () {
-        startEdit(game.id);
-      });
+    const edit = document.createElement("button");
+    edit.className = "secondary";
+    edit.textContent = "تعديل";
+    edit.onclick = () => editGame(game.id);
 
-      const deleteButton = document.createElement("button");
-      deleteButton.className = "danger";
-      deleteButton.textContent = "حذف";
-      deleteButton.addEventListener("click", function () {
-        deleteGame(game.id);
-      });
+    const del = document.createElement("button");
+    del.className = "danger";
+    del.textContent = "حذف";
+    del.onclick = () => deleteGame(game.id);
 
-      actions.append(editButton, deleteButton);
-      info.append(title, details, description, actions);
-      item.append(img, info);
-      gamesList.appendChild(item);
-    });
+    actions.append(edit, del);
+    info.append(title, details, description, actions);
+    item.appendChild(info);
+    $("gamesList").appendChild(item);
+  });
+}
+
+function editGame(id){
+  const game = games.find(g => String(g.id) === String(id));
+  if(!game) return;
+
+  $("gameId").value = game.id;
+  $("name").value = game.name || "";
+  $("size").value = game.size || "";
+  $("category").value = game.category || "أخرى";
+  $("description").value = game.description || "";
+
+  selectedImage = game.image || "";
+  $("imageFile").value = "";
+  showPreview(selectedImage);
+
+  $("formTitle").textContent = "✏️ تعديل لعبة";
+  $("saveBtn").textContent = "حفظ التعديلات";
+  $("cancelBtn").classList.remove("hidden");
+  $("formTitle").scrollIntoView({behavior:"smooth"});
+}
+
+function resetForm(){
+  $("gameForm").reset();
+  $("gameId").value = "";
+  selectedImage = "";
+  showPreview("");
+  $("formTitle").textContent = "➕ إضافة لعبة جديدة";
+  $("saveBtn").textContent = "حفظ اللعبة";
+  $("cancelBtn").classList.add("hidden");
+}
+
+$("cancelBtn").addEventListener("click", resetForm);
+
+$("gameForm").addEventListener("reset", function(){
+  setTimeout(() => {
+    if(!$("gameId").value){
+      selectedImage = "";
+      showPreview("");
+    }
+  }, 0);
+});
+
+function deleteGame(id){
+  const game = games.find(g => String(g.id) === String(id));
+  if(!game || !confirm("هل تريد حذف اللعبة " + game.name + "؟")) return;
+
+  const previous = games.slice();
+  games = games.filter(g => String(g.id) !== String(id));
+
+  if(!saveGames()){
+    games = previous;
+    return;
   }
 
-  gameForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    hideMessage(formMessage);
+  renderGames();
+}
 
-    const id = document.getElementById("gameId").value;
-    const name = document.getElementById("gameName").value.trim();
-    const size = document.getElementById("gameSize").value.trim();
-    const category = document.getElementById("gameCategory").value;
-    const description =
-      document.getElementById("gameDescription").value.trim();
-    const image = document.getElementById("gameImage").value.trim();
+$("deleteAllBtn").addEventListener("click", function(){
+  if(!games.length) return alert("لا توجد ألعاب لحذفها.");
+  if(!confirm("هل تريد حذف كل الألعاب؟")) return;
 
-    if (!name) {
-      showMessage(formMessage, "اكتب اسم اللعبة أولًا.", true);
-      return;
-    }
+  const previous = games.slice();
+  games = [];
 
-    const gameData = {
-      id: id || (Date.now().toString() + Math.random().toString(16).slice(2)),
-      name,
-      size,
-      category,
-      description,
-      image
-    };
-
-    const oldGames = games.slice();
-
-    if (id) {
-      games = games.map(function (game) {
-        return game.id === id ? gameData : game;
-      });
-    } else {
-      games.unshift(gameData);
-    }
-
-    if (!saveGames()) {
-      games = oldGames;
-      return;
-    }
-
-    resetForm();
-    renderGames();
-
-    showMessage(
-      formMessage,
-      id ? "تم تعديل بيانات اللعبة بنجاح." : "تمت إضافة اللعبة بنجاح."
-    );
-  });
-
-  function startEdit(id) {
-    const game = games.find(function (item) {
-      return item.id === id;
-    });
-
-    if (!game) return;
-
-    document.getElementById("gameId").value = game.id;
-    document.getElementById("gameName").value = game.name || "";
-    document.getElementById("gameSize").value = game.size || "";
-    document.getElementById("gameCategory").value = game.category || "أخرى";
-    document.getElementById("gameDescription").value =
-      game.description || "";
-    document.getElementById("gameImage").value = game.image || "";
-
-    document.getElementById("formTitle").textContent = "✏️ تعديل لعبة";
-    document.getElementById("saveButton").textContent = "حفظ التعديلات";
-    document.getElementById("cancelEdit").classList.remove("hidden");
-
-    hideMessage(formMessage);
-    document.getElementById("formTitle").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+  if(!saveGames()){
+    games = previous;
+    return;
   }
 
-  function resetForm() {
-    gameForm.reset();
-    document.getElementById("gameId").value = "";
-    document.getElementById("formTitle").textContent = "➕ إضافة لعبة جديدة";
-    document.getElementById("saveButton").textContent = "حفظ اللعبة";
-    document.getElementById("cancelEdit").classList.add("hidden");
-  }
+  resetForm();
+  renderGames();
+});
 
-  document.getElementById("cancelEdit").addEventListener("click", resetForm);
-
-  document.getElementById("clearForm").addEventListener("click", function () {
-    setTimeout(resetForm, 0);
-  });
-
-  function deleteGame(id) {
-    const game = games.find(function (item) {
-      return item.id === id;
-    });
-
-    if (!game || !confirm('هل تريد حذف اللعبة "' + game.name + '"؟')) {
-      return;
-    }
-
-    const oldGames = games.slice();
-    games = games.filter(function (item) {
-      return item.id !== id;
-    });
-
-    if (!saveGames()) {
-      games = oldGames;
-      return;
-    }
-
-    renderGames();
-    showMessage(formMessage, "تم حذف اللعبة.");
-  }
-
-  document.getElementById("deleteAllButton").addEventListener("click", function () {
-    if (games.length === 0) {
-      alert("مفيش ألعاب للحذف.");
-      return;
-    }
-
-    if (!confirm("متأكد إنك عايز تحذف كل الألعاب؟")) return;
-
-    const oldGames = games.slice();
-    games = [];
-
-    if (!saveGames()) {
-      games = oldGames;
-      return;
-    }
-
-    resetForm();
-    renderGames();
-    showMessage(formMessage, "تم حذف كل الألعاب.");
-  });
-
-  document.getElementById("logoutButton").addEventListener("click", function () {
-    adminPanel.classList.add("hidden");
-    loginCard.classList.remove("hidden");
-    passwordInput.value = "";
-    resetForm();
-  });
+$("logoutBtn").addEventListener("click", function(){
+  $("panel").classList.add("hidden");
+  $("login").classList.remove("hidden");
+  $("password").value = "";
+  resetForm();
+});
 </script>
 
 </body>
