@@ -174,7 +174,36 @@ dialog p {line-height:1.9;color:#ddd}
 </style>
 </head>
 <body>
+<a href="edit.html" class="edit-link">⚙️ تعديل</a>
 
+<style>
+.edit-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  padding: 11px 20px;
+  color: white;
+  background: #211044;
+  border: 1px solid #7546ff;
+  border-radius: 9px;
+  text-decoration: none;
+  font-family: Arial, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.edit-link:hover {
+  background: #7546ff;
+}
+
+@media (max-width: 600px) {
+  .edit-link {
+    top: 10px;
+    left: 10px;
+    padding: 9px 13px;
+  }
+}
+</style>
 <header>
   <div class="logo">FANTASY STORE</div>
   <h1>ألعاب <span style="color:#a88aff">PS4</span></h1>
