@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إدارة الألعاب - FANTASY STORE</title>
+
+<style>
+:root {
+  --bg: #080d18;
+  --panel: #111a2b;
+  --card: #172238;
+  --text: #f3f6ff;
+  --muted: #aab6cc;
+  --border: #293954;
+  --accent: #12c8e8;
+  --gold: #f5c451;
+  --danger: #ff626c;
+}
+
+body.light {
+  --bg: #f2f5fb;
+  --panel: #ffffff;
+  --card: #f7f9ff;
+  --text: #182238;
+  --muted: #5c6980;
+  --border: #d8dfeb;
+  --accent: #007e9a;
+  --gold: #9a6900;
+  --danger: #d92737;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 18px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Tahoma, sans-serif;
+  transition: background .2s, color .2s;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 0 0 7px;
+  color: var(--gold);
+  font-size: 27px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin: 13px 0 7px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button,
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.gold {
+  background: var(--gold);
+  color: #151515;
+}
+
+.delete {
+  background: var(--danger);
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.game {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 13px;
+  overflow: hidden;
+}
+
+.game img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: var(--bg);
+  border-radius: 9px;
+}
+
+.game h3 {
+  margin: 12px 0 8px;
+  color: var(--gold);
+}
+
+.game p {
+  color: var(--muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin: 3px 2px;
+  font-size: 13px;
+}
+
+#message {
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 11px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <h1>FANTASY STORE</h1>
+    <p class="subtitle">إدارة مكتبة ألعاب بلايستيشن 4</p>
+  </div>
+
+  <button class="secondary" id="themeBtn" type="button">
+    ☀️ الوضع الفاتح
+  </button>
+</header>
+
+<section class="panel" id="loginPanel">
+  <h2>🔐 تسجيل دخول الإدارة</h2>
+
+  <label for="email">البريد الإلكتروني</label>
+  <input id="email" type="email" placeholder="admin@example.com" autocomplete="username">
+
+  <label for="password">كلمة المرور</label>
+  <input id="password" type="password" placeholder="اكتب كلمة المرور" autocomplete="current-password">
+
+  <div class="actions">
+    <button class="primary" id="loginBtn" type="button">دخول</button>
+    <a class="btn secondary" href="ps4.html">العودة إلى المتجر</a>
+  </div>
+
+  <p id="loginMessage" class="note"></p>
+</section>
+
+<section class="panel hidden" id="setupPanel">
+  <h2>🔒 إعداد حساب الإدارة</h2>
+  <p class="note">دخلت بالحساب الافتراضي. لازم تحدد بريد وكلمة مرور خاصين بيك قبل ما تكمل، والحساب الافتراضي هيتعطّل بعد كده.</p>
+
+  <label for="newEmail">البريد الجديد</label>
+  <input id="newEmail" type="email" placeholder="you@example.com" autocomplete="username">
+
+  <label for="newPassword">كلمة المرور الجديدة (8 أحرف على الأقل)</label>
+  <input id="newPassword" type="password" autocomplete="new-password">
+
+  <label for="newPassword2">تأكيد كلمة المرور</label>
+  <input id="newPassword2" type="password" autocomplete="new-password">
+
+  <div class="actions">
+    <button class="primary" id="setupBtn" type="button">حفظ والمتابعة</button>
+    <button class="secondary" id="setupLogoutBtn" type="button">تسجيل الخروج</button>
+  </div>
+
+  <p id="setupMessage" class="note" role="status"></p>
+</section>
+
+<main id="adminPanel" class="hidden">
+
+  <section class="panel">
+    <h2 id="formTitle">➕ إضافة لعبة جديدة</h2>
+
+    <form id="gameForm">
+      <input id="gameId" type="hidden">
+
+      <label for="name">اسم اللعبة</label>
+      <input id="name" type="text" required placeholder="مثال: God of War">
+
+      <label for="size">حجم اللعبة</label>
+      <input id="size" type="text" placeholder="مثال: 45 GB">
+
+      <label for="category">القسم</label>
+      <select id="category" required>
+        <option value="أكشن">أكشن</option>
+        <option value="مغامرات">مغامرات</option>
+        <option value="رعب">رعب</option>
+        <option value="أطفال">أطفال</option>
+        <option value="رياضة">رياضة</option>
+        <option value="سباقات">سباقات</option>
+        <option value="ألعاب محلية">ألعاب محلية</option>
+      </select>
+
+      <label for="players">عدد اللاعبين</label>
+      <select id="players" required>
+        <option value="لاعب واحد">لاعب واحد</option>
+        <option value="لاعبان">لاعبان</option>
+        <option value="3 لاعبين">3 لاعبين</option>
+        <option value="4 لاعبين">4 لاعبين</option>
+      </select>
+
+      <label for="description">وصف اللعبة</label>
+      <textarea id="description" placeholder="اكتب وصف اللعبة هنا"></textarea>
+
+      <label for="video">رابط فيديو الإعلان (يوتيوب)</label>
+      <input id="video" type="url" dir="ltr" placeholder="https://www.youtube.com/watch?v=...">
+      <p class="note">اختياري. لو كتبته هيظهر زر "عرض الإعلان" تحت اللعبة في المتجر.</p>
+
+      <label for="image">صورة غلاف اللعبة</label>
+      <input id="image" type="file" accept="image/*">
+      <p class="note">تقدر تختار صورة من جهازك. يفضّل أن يكون حجم الصورة صغيرًا لتجنب امتلاء مساحة التخزين.</p>
+
+      <div class="actions">
+        <button class="primary" id="saveBtn" type="submit">💾 حفظ اللعبة</button>
+        <button class="secondary hidden" id="cancelBtn" type="button">إلغاء التعديل</button>
+        <button class="secondary" type="reset">مسح الحقول</button>
+      </div>
+
+      <p id="message" class="note" role="status"></p>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>🎮 الألعاب الموجودة</h2>
+    <p class="note">تقدر تعدّل أي لعبة أو تحذفها من هنا.</p>
+
+    <input id="adminSearch" type="search" placeholder="ابحث عن لعبة...">
+
+    <div class="actions">
+      <button class="secondary" id="exportBtn" type="button">📥 تصدير نسخة احتياطية</button>
+      <button class="secondary" id="importBtn" type="button">📤 استيراد نسخة احتياطية</button>
+      <input id="backupFile" type="file" accept=".json,application/json" class="hidden">
+    </div>
+
+    <p class="note">النسخة الاحتياطية تساعدك على نقل بيانات الألعاب يدويًا إلى جهاز آخر.</p>
+
+    <div id="gameList" class="game-list"></div>
+    <p id="emptyMessage" class="note hidden">مفيش ألعاب مطابقة للبحث.</p>
+  </section>
+
+  <div class="actions">
+    <a href="ps4.html" class="btn gold">عرض المتجر</a>
+    <button class="secondary" id="logoutBtn" type="button">تسجيل الخروج</button>
+  </div>
+
+</main>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  collection, doc, getDoc, setDoc, deleteDoc, onSnapshot, getDocs, writeBatch
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDSs1xHQlUB4EdJn70R_izq0QtIgW9gskU",
+  authDomain: "fantasy-games-3a3f0.firebaseapp.com",
+  projectId: "fantasy-games-3a3f0",
+  storageBucket: "fantasy-games-3a3f0.firebasestorage.app",
+  messagingSenderId: "281763153439",
+  appId: "1:281763153439:web:d72656c666ffea97dfb72a",
+  measurementId: "G-X54EQL7640"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+const THEME_KEY = "fantasyStoreThemeV1";
+
+const $ = id => document.getElementById(id);
+
+let games = [];
+let editingId = null;
+let unsubscribeGames = null;
+
+/* هذه الصفحة تدير ألعاب منصة واحدة فقط */
+const PLATFORM_NAME = "PS4";
+const SHOP_PAGE = "ps4.html";
+const GAMES_COLLECTION = "games";
+const gamesCol = () => GAMES_COLLECTION;
+
+function startListening() {
+  stopListening();
+  games = [];
+  renderGames();
+  unsubscribeGames = onSnapshot(
+    collection(db, GAMES_COLLECTION),
+    snap => {
+      games = snap.docs
+        .map(d => ({ ...d.data(), id: d.id }))
+        .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+      renderGames();
+    },
+    () => showMessage("تعذر تحميل الألعاب من Firebase.", true)
+  );
+}
+
+/* الوضع الفاتح والداكن */
+function applyTheme() {
+  const theme = localStorage.getItem(THEME_KEY) || "dark";
+  document.body.classList.toggle("light", theme === "light");
+  $("themeBtn").textContent =
+    theme === "light" ? "🌙 الوضع الداكن" : "☀️ الوضع الفاتح";
+}
+
+$("themeBtn").addEventListener("click", () => {
+  const nextTheme = document.body.classList.contains("light")
+    ? "dark"
+    : "light";
+
+  localStorage.setItem(THEME_KEY, nextTheme);
+  applyTheme();
+});
+
+applyTheme();
+
+/* رسائل الحالة */
+function showMessage(message, error = false) {
+  $("message").textContent = message;
+  $("message").style.color = error ? "var(--danger)" : "var(--accent)";
+}
+
+/* الحساب الافتراضي: يُستخدم مرة واحدة فقط لأول دخول ثم يُستبدل */
+const DEFAULT_EMAIL = "admin@fantasy-store.com";
+const DEFAULT_PASSWORD = "Admin@12345";
+let settingUp = false;
+
+function showOnly(panelId) {
+  ["loginPanel", "setupPanel", "adminPanel"].forEach(id =>
+    $(id).classList.toggle("hidden", id !== panelId)
+  );
+}
+
+function stopListening() {
+  if (unsubscribeGames) {
+    unsubscribeGames();
+    unsubscribeGames = null;
+  }
+}
+
+/* تسجيل الدخول عبر Firebase Auth */
+async function login() {
+  const email = $("email").value.trim().toLowerCase();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    $("loginMessage").textContent = "اكتب البريد وكلمة المرور.";
+    return;
+  }
+
+  $("loginBtn").disabled = true;
+  $("loginMessage").textContent = "جاري تسجيل الدخول...";
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    $("loginMessage").textContent = "";
+  } catch (error) {
+    const isDefault = email === DEFAULT_EMAIL && password === DEFAULT_PASSWORD;
+    const missing = ["auth/invalid-credential", "auth/user-not-found"].includes(error.code);
+
+    if (isDefault && missing) {
+      // أول مرة: إنشاء الحساب الافتراضي تلقائيًا
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        $("loginMessage").textContent = "";
+      } catch (createError) {
+        $("loginMessage").textContent = "البريد أو كلمة المرور غير صحيحة.";
+      }
+    } else {
+      $("loginMessage").textContent = "البريد أو كلمة المرور غير صحيحة.";
+    }
+  } finally {
+    $("loginBtn").disabled = false;
+  }
+}
+
+$("loginBtn").addEventListener("click", login);
+
+$("password").addEventListener("keydown", event => {
+  if (event.key === "Enter") login();
+});
+
+$("logoutBtn").addEventListener("click", () => signOut(auth));
+$("setupLogoutBtn").addEventListener("click", () => signOut(auth));
+
+/* التحقق من صلاحية المستخدم وعرض الشاشة المناسبة */
+async function handleUser(user) {
+  if (!user) {
+    stopListening();
+    games = [];
+    showOnly("loginPanel");
+    resetForm();
+    return;
+  }
+
+  try {
+    let isAdmin = (await getDoc(doc(db, "admins", user.uid))).exists();
+
+    // أول دخول بالحساب الافتراضي قبل إتمام الإعداد
+    if (!isAdmin && user.email === DEFAULT_EMAIL) {
+      const done = await getDoc(doc(db, "setup", "done"));
+      if (!done.exists()) {
+        await setDoc(doc(db, "admins", user.uid), {
+          email: user.email,
+          createdAt: Date.now()
+        });
+        isAdmin = true;
+      }
+    }
+
+    if (!isAdmin) {
+      await signOut(auth);
+      $("loginMessage").textContent = "هذا الحساب غير مصرّح له بالإدارة.";
+      return;
+    }
+
+    $("password").value = "";
+
+    // الحساب الافتراضي: لازم يغيّر البريد وكلمة المرور أولًا
+    if (user.email === DEFAULT_EMAIL) {
+      stopListening();
+      showOnly("setupPanel");
+      return;
+    }
+
+    showOnly("adminPanel");
+
+    if (!unsubscribeGames) {
+      startListening();
+    }
+  } catch (error) {
+    await signOut(auth);
+    $("loginMessage").textContent = "تعذر التحقق من الحساب. راجع قواعد Firestore.";
+  }
+}
+
+onAuthStateChanged(auth, user => {
+  if (settingUp) return;
+  handleUser(user);
+});
+
+/* إنشاء حساب الإدارة الحقيقي بدل الافتراضي */
+$("setupBtn").addEventListener("click", async () => {
+  const msg = text => { $("setupMessage").textContent = text; };
+
+  const email = $("newEmail").value.trim().toLowerCase();
+  const pass = $("newPassword").value;
+  const pass2 = $("newPassword2").value;
+
+  if (!email || !email.includes("@")) return msg("اكتب بريدًا صحيحًا.");
+  if (email === DEFAULT_EMAIL) return msg("اختار بريدًا مختلفًا عن الافتراضي.");
+  if (pass.length < 8) return msg("كلمة المرور لازم تكون 8 أحرف على الأقل.");
+  if (pass === DEFAULT_PASSWORD) return msg("اختار كلمة مرور مختلفة عن الافتراضية.");
+  if (pass !== pass2) return msg("كلمتا المرور غير متطابقتين.");
+
+  const oldUid = auth.currentUser.uid;
+
+  $("setupBtn").disabled = true;
+  msg("جاري إنشاء الحساب...");
+  settingUp = true;
+
+  try {
+    await setDoc(doc(db, "pending", email), { createdAt: Date.now() });
+
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+
+    await setDoc(doc(db, "admins", cred.user.uid), { email, createdAt: Date.now() });
+    await setDoc(doc(db, "setup", "done"), { doneAt: Date.now() });
+    await deleteDoc(doc(db, "admins", oldUid));
+    await deleteDoc(doc(db, "pending", email));
+
+    $("newEmail").value = "";
+    $("newPassword").value = "";
+    $("newPassword2").value = "";
+    msg("");
+
+    settingUp = false;
+    await handleUser(auth.currentUser);
+  } catch (error) {
+    settingUp = false;
+    msg(
+      error.code === "auth/email-already-in-use"
+        ? "هذا البريد مستخدم بالفعل. اختار بريدًا آخر."
+        : "تعذر إنشاء الحساب. تأكد من قواعد Firestore ثم حاول مرة أخرى."
+    );
+
+    if (auth.currentUser && auth.currentUser.uid !== oldUid) {
+      await signOut(auth);
+    }
+  } finally {
+    $("setupBtn").disabled = false;
+  }
+});
+
+/* تجهيز النموذج */
+function resetForm() {
+  editingId = null;
+  $("gameForm").reset();
+  $("gameId").value = "";
+  $("formTitle").textContent = "➕ إضافة لعبة جديدة";
+  $("saveBtn").textContent = "💾 حفظ اللعبة";
+  $("cancelBtn").classList.add("hidden");
+  showMessage("");
+}
+
+$("cancelBtn").addEventListener("click", resetForm);
+
+$("gameForm").addEventListener("reset", () => {
+  setTimeout(() => {
+    if (editingId === null) {
+      $("players").value = "لاعب واحد";
+    }
+  }, 0);
+});
+
+/* قراءة صورة الغلاف وضغطها لتناسب Firestore */
+function readImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file) {
+      resolve("");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      reject(new Error("اختار ملف صورة صحيح."));
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const img = new Image();
+
+      img.onload = () => {
+        const maxSize = 600;
+        const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.75));
+      };
+
+      img.onerror = () => reject(new Error("تعذرت قراءة الصورة."));
+      img.src = reader.result;
+    };
+
+    reader.onerror = () => reject(new Error("تعذرت قراءة الصورة."));
+    reader.readAsDataURL(file);
+  });
+}
+
+/* التحقق من رابط يوتيوب */
+function isYouTubeUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" &&
+      ["youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be"].includes(url.hostname);
+  } catch (error) {
+    return false;
+  }
+}
+
+/* إضافة لعبة أو حفظ التعديل */
+$("gameForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const name = $("name").value.trim();
+
+  if (!name) {
+    showMessage("اكتب اسم اللعبة أولًا.", true);
+    return;
+  }
+
+  const video = $("video").value.trim();
+
+  if (video && !isYouTubeUrl(video)) {
+    showMessage("رابط الفيديو لازم يكون رابط يوتيوب يبدأ بـ https://", true);
+    return;
+  }
+
+  const file = $("image").files[0];
+  const existingGame = editingId !== null
+    ? games.find(game => String(game.id) === String(editingId))
+    : null;
+
+  let image = existingGame?.image || "";
+
+  try {
+    if (file) {
+      image = await readImage(file);
+    }
+  } catch (error) {
+    showMessage(error.message || "حدث خطأ أثناء قراءة الصورة.", true);
+    return;
+  }
+
+  const id = editingId !== null ? String(editingId) : Date.now().toString();
+
+  const game = {
+    name,
+    size: $("size").value.trim(),
+    category: $("category").value,
+    players: $("players").value,
+    description: $("description").value.trim(),
+    video,
+    image,
+    createdAt: existingGame?.createdAt || Date.now()
+  };
+
+  $("saveBtn").disabled = true;
+
+  try {
+    await setDoc(doc(db, gamesCol(), id), game);
+    const wasEditing = editingId !== null;
+    resetForm();
+    showMessage(wasEditing ? "تم تعديل اللعبة بنجاح." : "تمت إضافة اللعبة بنجاح.");
+  } catch (error) {
+    showMessage("تعذر الحفظ. تأكد من تسجيل الدخول ومن قواعد Firestore.", true);
+  } finally {
+    $("saveBtn").disabled = false;
+  }
+});
+
+/* عرض الألعاب في لوحة الإدارة */
+function renderGames() {
+  const query = $("adminSearch").value.trim().toLowerCase();
+  const list = $("gameList");
+  list.innerHTML = "";
+
+  const filtered = games.filter(game =>
+    String(game.name || "").toLowerCase().includes(query)
+  );
+
+  $("emptyMessage").classList.toggle("hidden", filtered.length !== 0);
+
+  filtered.forEach(game => {
+    const card = document.createElement("article");
+    card.className = "game";
+
+    if (game.image) {
+      const img = document.createElement("img");
+      img.src = game.image;
+      img.alt = "غلاف " + (game.name || "اللعبة");
+      card.appendChild(img);
+    }
+
+    const title = document.createElement("h3");
+    title.textContent = game.name || "لعبة بدون اسم";
+    card.appendChild(title);
+
+    const info = document.createElement("p");
+    info.textContent =
+      "القسم: " + (game.category || "غير محدد") +
+      "\nالحجم: " + (game.size || "غير محدد") +
+      "\nعدد اللاعبين: " + (game.players || "لاعب واحد") +
+      "\n" + (game.description || "لا يوجد وصف.");
+    info.style.whiteSpace = "pre-line";
+    card.appendChild(info);
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    const editButton = document.createElement("button");
+    editButton.type = "button";
+    editButton.className = "primary";
+    editButton.textContent = "✏️ تعديل";
+    editButton.addEventListener("click", () => editGame(game.id));
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "delete";
+    deleteButton.textContent = "🗑️ حذف";
+    deleteButton.addEventListener("click", () => deleteGame(game.id));
+
+    actions.append(editButton, deleteButton);
+    card.appendChild(actions);
+    list.appendChild(card);
+  });
+}
+
+$("adminSearch").addEventListener("input", renderGames);
+
+/* تعديل لعبة */
+function editGame(id) {
+  const game = games.find(item => String(item.id) === String(id));
+  if (!game) return;
+
+  editingId = game.id;
+
+  $("gameId").value = game.id;
+  $("name").value = game.name || "";
+  $("size").value = game.size || "";
+  $("category").value = game.category || "أكشن";
+  $("players").value = game.players || "لاعب واحد";
+  $("description").value = game.description || "";
+  $("video").value = game.video || "";
+  $("image").value = "";
+
+  $("formTitle").textContent = "✏️ تعديل لعبة";
+  $("saveBtn").textContent = "💾 حفظ التعديلات";
+  $("cancelBtn").classList.remove("hidden");
+
+  showMessage("عدّل البيانات ثم اضغط حفظ التعديلات.");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* حذف لعبة */
+async function deleteGame(id) {
+  const game = games.find(item => String(item.id) === String(id));
+  if (!game) return;
+
+  if (!confirm("هل أنت متأكد أنك تريد حذف لعبة " + game.name + "؟")) {
+    return;
+  }
+
+  try {
+    await deleteDoc(doc(db, gamesCol(), String(id)));
+
+    if (String(editingId) === String(id)) {
+      resetForm();
+    }
+  } catch (error) {
+    showMessage("تعذر الحذف. تأكد من تسجيل الدخول.", true);
+  }
+}
+
+/* تصدير نسخة احتياطية */
+$("exportBtn").addEventListener("click", () => {
+  const data = JSON.stringify(games, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "fantasy-store-" + PLATFORM_NAME.toLowerCase() + "-backup.json";
+  link.click();
+
+  URL.revokeObjectURL(url);
+});
+
+/* استيراد نسخة احتياطية */
+$("importBtn").addEventListener("click", () => {
+  $("backupFile").click();
+});
+
+async function commitInChunks(operations) {
+  for (let i = 0; i < operations.length; i += 400) {
+    const batch = writeBatch(db);
+    operations.slice(i, i + 400).forEach(op => op(batch));
+    await batch.commit();
+  }
+}
+
+$("backupFile").addEventListener("change", async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  try {
+    const textData = await file.text();
+    const imported = JSON.parse(textData);
+
+    if (!Array.isArray(imported)) {
+      throw new Error("ملف النسخة الاحتياطية غير صحيح.");
+    }
+
+    const valid = imported.every(game =>
+      game &&
+      typeof game === "object" &&
+      game.name
+    );
+
+    if (!valid) {
+      throw new Error("الملف يحتوي على بيانات ألعاب غير صحيحة.");
+    }
+
+    if (!confirm("سيتم استبدال قائمة الألعاب الحالية بالنسخة المستوردة. هل تريد المتابعة؟")) {
+      return;
+    }
+
+    showMessage("جاري الاستيراد...");
+
+    const existing = await getDocs(collection(db, gamesCol()));
+    const operations = [];
+
+    existing.docs.forEach(d => {
+      operations.push(batch => batch.delete(d.ref));
+    });
+
+    imported.forEach((game, index) => {
+      const id = String(game.id ?? ("imported-" + Date.now() + "-" + index));
+      const data = {
+        name: String(game.name || ""),
+        size: String(game.size || ""),
+        category: String(game.category || "أكشن"),
+        players: ["لاعب واحد", "لاعبان", "3 لاعبين", "4 لاعبين"].includes(game.players)
+          ? game.players
+          : "لاعب واحد",
+        description: String(game.description || ""),
+        video: typeof game.video === "string" ? game.video : "",
+        image: typeof game.image === "string" ? game.image : "",
+        createdAt: Number(game.createdAt) || Date.now() + index
+      };
+      operations.push(batch => batch.set(doc(db, gamesCol(), id), data));
+    });
+
+    await commitInChunks(operations);
+
+    resetForm();
+    showMessage("تم استيراد النسخة الاحتياطية بنجاح.");
+  } catch (error) {
+    showMessage(error.message || "تعذر استيراد الملف.", true);
+  } finally {
+    $("backupFile").value = "";
+  }
+});
+</script>
+</body>
+</html>
